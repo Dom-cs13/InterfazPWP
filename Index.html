@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño ONG - Pueblos Indígenas</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2C509C', // Tono azul solicitado
+                        dark: '#111827',
+                        light: '#F9FAFB'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111827;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Contenedor para los hilos (SVG decorativos) */
+        .threads-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .thread-path {
+            fill: none;
+            stroke: #374151; /* Color oscuro tipo grafito/lápiz */
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="antialiased relative">
+
+    <div class="threads-container">
+        <!-- Hilo 1: Cruza la parte superior a la sección 1 -->
+        <svg class="absolute top-[500px] left-0 w-full h-[800px]" preserveAspectRatio="none" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="thread-path" d="M -100,50 C 200,-50 300,200 500,100 S 800,300 1000,150 S 1300,-50 1500,100" />
+            <path class="thread-path" d="M -50,100 C 150,300 350,-50 600,150 S 900,400 1100,200 S 1350,-20 1600,250" />
+            <path class="thread-path" d="M -200,600 C 100,400 200,700 400,500 S 800,800 1200,500 S 1500,700 1600,600" />
+        </svg>
+
+        <!-- Hilo 2: Cruza la sección de Historias hacia abajo -->
+        <svg class="absolute top-[1800px] left-0 w-full h-[1200px]" preserveAspectRatio="none" viewBox="0 0 1440 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="thread-path" d="M 1500,100 C 1200,50 1000,300 700,200 S 300,500 0,300" />
+            <path class="thread-path" d="M 1600,400 C 1300,600 1100,100 800,300 S 400,-50 -100,400" />
+            <path class="thread-path" d="M 1440,800 C 1000,1000 800,700 400,900 S 100,1100 -50,1000" />
+        </svg>
+    </div>
+
+    <header class="relative bg-primary text-white min-h-[90vh] flex flex-col">
+        <!-- Imagen de fondo placeholder con opacidad -->
+        <div class="absolute inset-0 z-0">
+            <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la ruta de tu imagen de fondo para el Hero -->
+            <img src="ImagenesCercap\Captura de pantalla 2026-09-09 203918.png" alt="Hero Background" class="w-full h-full object-cover opacity-40 mix-blend-multiply">
+        </div>
+
+        <!-- Navbar -->
+        <nav class="relative z-10 w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center border-b border-white/20">
+            <div class="flex items-center gap-2">
+                <!-- Placeholder Logo -->
+                <div class="w-10 h-10 border border-white rounded-full flex items-center justify-center">
+                    <span class="text-xs font-bold">Logo</span>
+                </div>
+                <div class="text-sm font-medium leading-tight">
+                    Mencap - CDFC<br>
+                    <span class="text-xs font-light opacity-80">Centro Regional de Capacitación...</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="hover:opacity-80 transition">Página</a>
+                <a href="#" class="hover:opacity-80 transition">Página</a>
+                <a href="#" class="hover:opacity-80 transition">Shop</a>
+                <a href="#" class="border border-white px-5 py-2 hover:bg-white hover:text-primary transition">Botón</a>
+            </div>
+        </nav>
+
+        <!-- Contenido del Hero -->
+        <div class="relative z-10 flex-grow flex items-center justify-start max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-xl">
+                <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-tight">info</h1>
+                <p class="text-lg md:text-xl font-light mb-8">Subtítulo con descripción</p>
+                <button class="bg-dark text-white px-8 py-3 rounded hover:bg-black transition text-sm font-medium">
+                    Botón
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+        
+        <section class="max-w-7xl mx-auto px-6 py-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <!-- Decoración circular estilo hilo tras el texto -->
+                    <svg class="absolute -top-12 -left-12 w-32 h-32 text-gray-300 -z-10" viewBox="0 0 100 100" fill="none">
+                        <path d="M50 10 C 70 10, 90 30, 90 50 C 90 80, 70 90, 50 90 C 20 90, 10 70, 10 50 C 10 20, 30 10, 50 10 Z" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" />
+                    </svg>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Encabezado</h2>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        Un subtítulo para esta sección, tan largo o tan corto como quieras.
+                    </p>
+                    <button class="bg-dark text-white px-6 py-2 rounded hover:bg-black transition text-sm font-medium">
+                        Botón
+                    </button>
+                </div>
+                <div class="order-1 md:order-2">
+                    <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la ruta de tu imagen para la primera sección -->
+                    <img src="https://placehold.co/600x400/e5e7eb/6b7280?text=Imagen+Seccion+1" alt="Sección 1" class="w-full h-auto rounded shadow-lg object-cover aspect-video">
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 py-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la ruta de tu imagen para la segunda sección -->
+                    <img src="https://placehold.co/600x400/e5e7eb/6b7280?text=Imagen+Seccion+2" alt="Sección 2" class="w-full h-auto rounded shadow-lg object-cover aspect-video">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Encabezado</h2>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        Un subtítulo para esta sección, tan largo o tan corto como quieras.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-dark text-white px-6 py-2 rounded hover:bg-black transition text-sm font-medium">
+                            Botón
+                        </button>
+                        <button class="bg-gray-200 text-dark px-6 py-2 rounded hover:bg-gray-300 transition text-sm font-medium">
+                            Botón secundario
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-light py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12">Historias relevantes</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                    <!-- Elemento Grande (Izquierda) -->
+                    <div class="md:col-span-7 flex flex-col">
+                        <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la foto de tu Historia Empresarial o Producto Destacado -->
+                        <img src="https://placehold.co/800x600/e5e7eb/6b7280?text=Producto+Destacado" alt="Historia Empresarial" class="w-full h-[400px] md:h-[500px] object-cover rounded mb-4">
+                        <h3 class="text-xl font-bold mb-1">Historia empresarial</h3>
+                        <p class="text-gray-600 text-sm">Descripción del producto destacado.</p>
+                    </div>
+
+                    <!-- Elementos Pequeños (Derecha) -->
+                    <div class="md:col-span-5 flex flex-col gap-8">
+                        
+                        <!-- Producto Superior -->
+                        <div>
+                            <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la foto de tu primer producto -->
+                            <img src="https://placehold.co/600x300/e5e7eb/6b7280?text=Producto+Principal" alt="Producto" class="w-full h-48 md:h-56 object-cover rounded mb-4">
+                            <h3 class="text-lg font-bold mb-1">Producto</h3>
+                            <p class="text-gray-600 text-sm mb-1">Descripción del producto principal.</p>
+                            <p class="font-semibold">Q10.99</p>
+                        </div>
+
+                        <!-- Producto Inferior -->
+                        <div>
+                            <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la foto de tu segundo producto -->
+                            <img src="https://placehold.co/600x300/e5e7eb/6b7280?text=Producto+Menor" alt="Producto Menor" class="w-full h-48 md:h-56 object-cover rounded mb-4">
+                            <h3 class="text-lg font-bold mb-1">Producto</h3>
+                            <p class="text-gray-600 text-sm mb-1">Descripción del producto de menor categoría.</p>
+                            <p class="font-semibold">Q10.99</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 py-24">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 border-b pb-4">Encabezado de sección</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                <!-- Feature 1 -->
+                <div>
+                    <div class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-seedling text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Texto para lo que quieras decir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div>
+                    <div class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Texto para lo que quieras sugerir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div>
+                    <div class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-lock text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Texto para lo que quieras afirmar. Agrega puntos clave, citas, anécdotas o una historia muy breve.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div>
+                    <div class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Texto para lo que quieras escribir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-200 mt-12 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-between gap-12">
+                
+                <!-- Marca y Redes (Izquierda) -->
+                <div class="flex flex-col gap-6 w-full md:w-1/3">
+                    <h4 class="font-bold text-lg">Nombre del sitio</h4>
+                    <div class="flex gap-4 text-gray-500">
+                        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-youtube text-xl"></i></a>
+                        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Enlaces (Derecha - 3 Columnas) -->
+                <div class="w-full md:w-2/3 grid grid-cols-3 gap-4">
+                    
+                    <!-- Columna 1 -->
+                    <div class="flex flex-col gap-3">
+                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                    </div>
+                    
+                    <!-- Columna 2 -->
+                    <div class="flex flex-col gap-3">
+                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                    </div>
+
+                    <!-- Columna 3 -->
+                    <div class="flex flex-col gap-3">
+                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
