@@ -6,15 +6,18 @@
     <title>Tienda Virtual - Catálogo</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontSize: {
+                        'xs': ['13px', '18px'],
+                    },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Satoshi', 'sans-serif'],
                     },
                     colors: {
                         primary: '#2C509C', // Tono azul solicitado
@@ -27,13 +30,12 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F9FAFB;
-            color: #111827;
-            overflow-x: hidden;
-            position: relative;
-        }
+        
+        body { font-family: 'Satoshi', sans-serif !important; }
+        h1, h2, h3 { letter-spacing: -0.025em !important; }
+        p { font-size: 16px; line-height: 1.6; }
+        button { font-weight: 500; }
+        
 
         .threads-container {
             position: absolute;
