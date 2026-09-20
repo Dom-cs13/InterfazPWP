@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | CERCAP</title>
+    <!-- Tailwind CSS (via CDN for testing) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C509C',
+                        secondary: '#CBA862',
+                        dark: '#111827',
+                        light: '#F9FAFB',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .thread-base { fill: none; stroke-width: 5; stroke-linecap: round; opacity: 0.95; filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.3)); }
+        .thread-twist { fill: none; stroke: rgba(255, 255, 255, 0.5); stroke-width: 1.5; stroke-dasharray: 4 4; stroke-linecap: round; }
+        .thread-shadow { fill: none; stroke: rgba(0, 0, 0, 0.2); stroke-width: 1.5; stroke-dasharray: 4 4; stroke-dashoffset: 4; stroke-linecap: round; }
+        
+        /* Ocultar barra de desplazamiento para el panel inferior sticky si es muy largo, etc. */
+        .pb-safe { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+    </style>
+</head>
+<body class="antialiased relative bg-[#F8F9FA] pb-safe lg:pb-0">
+
+    <div class="threads-container absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <svg class="absolute top-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path id="t1" d="M -50,220 Q 720,290 1500,210" />
+                <path id="t2" d="M -50,250 Q 720,320 1500,240" />
+            </defs>
+            <g><use href="#t1" stroke="#E91E63" class="thread-base" /><use href="#t1" class="thread-shadow" /><use href="#t1" class="thread-twist" /></g>
+            <g><use href="#t2" stroke="#FCD116" class="thread-base" /><use href="#t2" class="thread-shadow" /><use href="#t2" class="thread-twist" /></g>
+        </svg>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="bg-primary text-white relative z-50 shadow-md">
+        <nav class="w-full max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4 md:gap-8">
+                <!-- Hamburger menu for mobile -->
+                <button class="lg:hidden text-white hover:text-gray-200">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <a href="Index.html" class="flex items-center gap-2 flex-shrink-0">
+                    <img src="ImagenesCercap/isologo-cercap(1).png" alt="Logo Cercap" class="h-8 md:h-10 w-auto object-contain">
+                    <div class="hidden sm:block text-sm font-medium leading-tight text-white">
+                        CERCAP<br><span class="text-xs font-light opacity-80">Tienda Virtual</span>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-6 text-sm font-medium">
+                    <a href="Index.html" class="hover:opacity-80 transition">Inicio</a>
+                    <a href="#" class="hover:opacity-80 transition">Historia</a>
+                    <a href="#" class="hover:opacity-80 transition">Qué Somos</a>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 ml-auto">
+                <button class="md:hidden text-white hover:text-gray-200 w-10 h-10 flex items-center justify-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <div class="relative hidden md:block group z-50">
+                    <input type="text" placeholder="Buscar..." class="peer w-10 h-10 focus:w-80 transition-all duration-300 ease-in-out bg-white/20 hover:bg-white/30 focus:bg-white text-gray-800 placeholder-transparent focus:placeholder-gray-400 rounded-full pl-3.5 pr-4 outline-none cursor-pointer focus:cursor-text focus:pl-10 shadow-sm focus:shadow-inner">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-white peer-focus:text-gray-500 pointer-events-none transition-colors"></i>
+                </div>
+                
+                <a href="carrito.html" class="hover:opacity-80 transition relative ml-2 md:ml-4">
+                    <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+                    <span class="absolute -top-2 -right-2 bg-yellow-400 text-gray-900 text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-primary">2</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 relative z-10 min-h-[60vh]">
+        
+        <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6">Carrito</h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Panel: Products -->
+            <div class="lg:col-span-8 flex flex-col gap-4 md:gap-6">
+                
+                <!-- Product 1 -->
+                <div class="bg-white border border-gray-100 rounded-xl p-4 md:p-5 shadow-sm flex flex-row gap-4 relative">
+                    <div class="w-24 h-24 md:w-32 md:h-32 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden border border-gray-100 flex items-center justify-center p-2">
+                        <img src="https://placehold.co/400x400/ffffff/6b7280?text=Aretes" alt="Aretes Artesanales" class="w-full h-full object-contain mix-blend-multiply">
+                    </div>
+                    <div class="flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 leading-tight mb-1">Aretes Artesanales de Mostacilla</h3>
+                            <div class="text-lg md:text-xl font-extrabold text-[#C1121F] mt-1">Q 150.00</div>
+                            <div class="mt-1"><span class="bg-[#e6f4ea] text-[#137333] text-[10px] md:text-xs font-bold px-2 py-0.5 md:py-1 rounded-md uppercase tracking-wider"><i class="fa-solid fa-bolt mr-1"></i> Entrega rápida</span></div>
+                        </div>
+                        <div class="flex flex-row justify-between items-end md:items-center mt-3">
+                            <button class="text-sm font-medium text-gray-600 underline hover:text-primary transition pb-1">Mover a favoritos</button>
+                            <div class="flex items-center gap-3">
+                                <button class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 bg-gray-50 rounded-full transition"><i class="fa-regular fa-trash-can"></i></button>
+                                <div class="flex items-center bg-gray-100 rounded-full overflow-hidden border border-gray-200 h-8">
+                                    <button class="px-2 md:px-3 h-full hover:bg-gray-200 text-gray-600 transition"><i class="fa-solid fa-minus text-xs"></i></button>
+                                    <span class="px-1 md:px-2 text-sm font-bold text-gray-900 w-6 md:w-8 text-center">10</span>
+                                    <button class="px-2 md:px-3 h-full hover:bg-gray-200 text-gray-600 transition"><i class="fa-solid fa-plus text-xs"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white border border-gray-100 rounded-xl p-4 md:p-5 shadow-sm flex flex-row gap-4 relative">
+                    <div class="w-24 h-24 md:w-32 md:h-32 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden border border-gray-100 flex items-center justify-center p-2">
+                        <img src="https://placehold.co/400x400/ffffff/6b7280?text=Mermelada" alt="Mermelada Fresa" class="w-full h-full object-contain mix-blend-multiply">
+                    </div>
+                    <div class="flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 leading-tight mb-1">Mermelada de Fresa Artesanal - 250g</h3>
+                            <div class="text-lg md:text-xl font-extrabold text-gray-900 mt-1">Q 175.00</div>
+                            <div class="mt-1"><span class="bg-gray-100 border border-gray-200 text-gray-600 text-[10px] md:text-xs font-bold px-2 py-0.5 md:py-1 rounded-md uppercase tracking-wider">Bajo pedido</span></div>
+                        </div>
+                        <div class="flex flex-row justify-between items-end md:items-center mt-3">
+                            <button class="text-sm font-medium text-gray-600 underline hover:text-primary transition pb-1">Mover a favoritos</button>
+                            <div class="flex items-center gap-3">
+                                <button class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 bg-gray-50 rounded-full transition"><i class="fa-regular fa-trash-can"></i></button>
+                                <div class="flex items-center bg-gray-100 rounded-full overflow-hidden border border-gray-200 h-8">
+                                    <button class="px-2 md:px-3 h-full hover:bg-gray-200 text-gray-600 transition"><i class="fa-solid fa-minus text-xs"></i></button>
+                                    <span class="px-1 md:px-2 text-sm font-bold text-gray-900 w-6 md:w-8 text-center">5</span>
+                                    <button class="px-2 md:px-3 h-full hover:bg-gray-200 text-gray-600 transition"><i class="fa-solid fa-plus text-xs"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Right Panel: Summary (Desktop sticky sidebar) -->
+            <div class="hidden lg:block lg:col-span-4">
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm sticky top-6">
+                    <button class="w-full bg-white border border-gray-200 rounded-lg p-4 flex justify-between items-center hover:border-gray-300 transition mb-6">
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-ticket text-gray-500"></i><span class="text-sm font-bold text-gray-700">Aplicar cupón o código</span></div>
+                        <i class="fa-solid fa-arrow-right text-gray-400"></i>
+                    </button>
+                    <div class="space-y-3 border-b border-gray-200 pb-4 mb-4">
+                        <div class="flex justify-between items-center text-sm"><span class="text-gray-600 font-bold">Subtotal</span><span class="font-bold text-gray-900">Q 1,675.00</span></div>
+                        <div class="flex justify-between items-center text-sm"><span class="text-gray-600">Envío</span><span class="font-bold text-gray-900">A cotizar</span></div>
+                    </div>
+                    <div class="flex justify-between items-center mb-6"><span class="text-lg font-bold text-gray-900">Total estimado</span><span class="text-xl font-extrabold text-gray-900">Q 1,675.00</span></div>
+                    <div class="space-y-3">
+                        <button class="w-full bg-[#F4D03F] hover:bg-[#F1C40F] text-gray-900 font-bold py-3.5 rounded-full shadow-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-file-lines"></i> Solicitar Cotización
+                        </button>
+                        <a href="shop.html" class="w-full bg-white border border-gray-300 text-gray-700 font-bold py-3.5 rounded-full shadow-sm hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i> Buscar más productos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Mobile Sticky Checkout Bar (Solamente en móviles) -->
+    <div class="lg:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] p-4 z-50">
+        <div class="flex items-center justify-between mb-3">
+            <div class="flex flex-col">
+                <span class="text-xs text-gray-500 font-medium">Subtotal</span>
+                <span class="text-lg font-extrabold text-gray-900">Q 1,675.00</span>
+            </div>
+            <!-- Se reemplaza Pagar por Solicitar Cotizacion según instruccion anterior -->
+            <button class="bg-[#F4D03F] hover:bg-[#F1C40F] text-gray-900 font-bold py-2.5 px-6 rounded-full shadow-sm transition flex items-center gap-2">
+                <i class="fa-regular fa-file-lines text-sm"></i> Solicitar Cotización
+            </button>
+        </div>
+        <!-- Link alternativo de seguir comprando para mobile -->
+        <div class="text-center">
+            <a href="shop.html" class="text-xs text-gray-500 hover:text-primary font-medium underline">Buscar más productos</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-12 pb-6 relative z-10 hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div><h4 class="font-bold mb-4 text-secondary">Sobre CERCAP</h4><p class="text-gray-400 text-sm">Impulsando el desarrollo regional a través del comercio justo y la artesanía guatemalteca.</p></div>
+            <div><h4 class="font-bold mb-4 text-secondary">Enlaces Rápidos</h4><ul class="text-gray-400 text-sm space-y-2"><li><a href="#" class="hover:text-white transition">Nuestra Historia</a></li><li><a href="#" class="hover:text-white transition">Productos</a></li><li><a href="#" class="hover:text-white transition">Contacto</a></li></ul></div>
+            <div><h4 class="font-bold mb-4 text-secondary">Contacto</h4><ul class="text-gray-400 text-sm space-y-2"><li><i class="fa-solid fa-location-dot mr-2"></i> Quetzaltenango, Guatemala</li><li><i class="fa-solid fa-phone mr-2"></i> +502 1234 5678</li></ul></div>
+        </div>
+    </footer>
+</body>
+</html>
