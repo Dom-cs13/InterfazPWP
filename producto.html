@@ -191,8 +191,13 @@
 
     <main class="max-w-6xl mx-auto px-6 py-12 relative z-10 min-h-[70vh]">
         
-        <!-- Breadcrumb -->
-        <nav class="flex text-xs text-gray-500 mb-8 font-medium" aria-label="Breadcrumb">
+        <!-- Back Arrow (Mobile) & Breadcrumb -->
+        <div class="flex items-center gap-3 mb-8">
+            <a href="shop.html" class="md:hidden flex items-center justify-center w-7 h-7 rounded-full bg-white border border-gray-200 shadow-sm text-gray-600 hover:text-primary transition" aria-label="Regresar">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+            </a>
+            <nav class="flex text-xs text-gray-500 font-medium" aria-label="Breadcrumb">
+
             <a href="shop.html" class="hover:text-primary transition">Artesanías</a>
             <span class="mx-2"><i class="fa-solid fa-chevron-right text-[10px]"></i></span>
             <a href="shop.html" class="hover:text-primary transition text-gray-800">Aretes y Accesorios</a>
