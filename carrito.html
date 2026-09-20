@@ -74,10 +74,52 @@
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-white peer-focus:text-gray-500 pointer-events-none transition-colors"></i>
                 </div>
                 
-                <a href="carrito.html" class="hover:opacity-80 transition relative ml-2 md:ml-4">
-                    <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
-                    <span class="absolute -top-2 -right-2 bg-yellow-400 text-gray-900 text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-primary">2</span>
-                </a>
+                <!-- Cart with Hover Dropdown -->
+                <div class="relative group ml-2 md:ml-4 z-50">
+                    <a href="carrito.html" class="hover:opacity-80 transition flex items-center relative py-2">
+                        <i class="fa-solid fa-cart-shopping text-xl md:text-2xl text-white"></i>
+                        <span class="absolute top-0 -right-2 bg-yellow-400 text-gray-900 text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-primary">2</span>
+                    </a>
+                    
+                    <!-- Dropdown -->
+                    <div class="absolute top-full right-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden cursor-default">
+                        <div class="p-3 border-b border-gray-100 bg-gray-50">
+                            <h4 class="text-sm font-bold text-gray-800">Tu Carrito (2)</h4>
+                        </div>
+                        
+                        <div class="max-h-64 overflow-y-auto p-2 space-y-2">
+                            <!-- Item 1 -->
+                            <div class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded transition">
+                                <img src="https://placehold.co/100x100/ffffff/6b7280?text=Aretes" alt="Aretes" class="w-12 h-12 object-contain bg-white rounded border border-gray-200 p-1 flex-shrink-0">
+                                <div class="flex-grow">
+                                    <h5 class="text-xs font-bold text-gray-800 line-clamp-2 leading-tight">Aretes Artesanales</h5>
+                                    <p class="text-[10px] text-gray-500 mt-0.5">10 unid.</p>
+                                </div>
+                                <span class="text-sm font-bold text-gray-900">Q 1,500</span>
+                            </div>
+                            
+                            <!-- Item 2 -->
+                            <div class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded transition">
+                                <img src="https://placehold.co/100x100/ffffff/6b7280?text=Mermelada" alt="Mermelada" class="w-12 h-12 object-contain bg-white rounded border border-gray-200 p-1 flex-shrink-0">
+                                <div class="flex-grow">
+                                    <h5 class="text-xs font-bold text-gray-800 line-clamp-2 leading-tight">Mermelada de Fresa</h5>
+                                    <p class="text-[10px] text-gray-500 mt-0.5">5 unid.</p>
+                                </div>
+                                <span class="text-sm font-bold text-gray-900">Q 175</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-50 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-sm text-gray-600 font-bold">Subtotal:</span>
+                                <span class="text-lg font-extrabold text-primary">Q 1,675.00</span>
+                            </div>
+                            <a href="carrito.html" class="block w-full bg-primary hover:bg-[#1E3A8A] text-white text-center text-sm font-bold py-2.5 rounded-full transition shadow-sm">
+                                Ver Carrito
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -100,7 +142,7 @@
                         <div>
                             <h3 class="text-base md:text-lg font-bold text-gray-900 leading-tight mb-1">Aretes Artesanales de Mostacilla</h3>
                             <div class="text-lg md:text-xl font-extrabold text-[#C1121F] mt-1">Q 150.00</div>
-                            <div class="mt-1"><span class="bg-[#e6f4ea] text-[#137333] text-[10px] md:text-xs font-bold px-2 py-0.5 md:py-1 rounded-md uppercase tracking-wider"><i class="fa-solid fa-bolt mr-1"></i> Entrega rápida</span></div>
+                            
                         </div>
                         <div class="flex flex-row justify-between items-end md:items-center mt-3">
                             <button class="text-sm font-medium text-gray-600 underline hover:text-primary transition pb-1">Mover a favoritos</button>
