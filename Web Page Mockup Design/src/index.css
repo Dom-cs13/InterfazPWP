@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #2C509C;
+  --color-border-dark: #1C2236;
+  --color-dark: #111827;
+  --color-silhouette: #374151;
+  --color-light: #F9FAFB;
+  --color-coverage: #EDEDEE;
+  --font-family-sans: 'Inter', sans-serif;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #111827;
+  overflow-x: hidden;
+}
+
+.mountain-path {
+  fill: none;
+  stroke: #374151;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.mountain-back  { stroke-width: 1.2; opacity: 0.35; }
+.mountain-mid   { stroke-width: 1.5; opacity: 0.5; }
+.mountain-front { stroke-width: 1.8; opacity: 0.65; }
+.mountain-contour { stroke-width: 1; stroke-dasharray: 4 6; opacity: 0.3; }
+
+/* Map pulse marker */
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.map-marker-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: rgba(44, 80, 156, 0.60);
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+

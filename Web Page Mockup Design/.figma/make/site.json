@@ -1,0 +1,10 @@
+{
+  "description": "Create and edit customizable website mockups with structured content sections and a corporate blue color palette for consistent branding and easy updates.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

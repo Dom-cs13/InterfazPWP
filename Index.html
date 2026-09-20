@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diseño ONG - Pueblos Indígenas</title>
+    <title>Cercap-CDRO</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,9 +18,11 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#2C509C', // Tono azul solicitado
+                        primary: '#2C509C',
+                        borderDark: '#2C509C',
                         dark: '#111827',
-                        light: '#F9FAFB'
+                        light: '#F9FAFB',
+                        coverage: '#EDEDEE',
                     }
                 }
             }
@@ -28,278 +30,967 @@
     </script>
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
             color: #111827;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Contenedor para los hilos (SVG decorativos) */
-        .threads-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .thread-path {
+        .mountain-path {
             fill: none;
-            stroke: #374151; /* Color oscuro tipo grafito/lápiz */
-            stroke-width: 1.5;
+            stroke: #374151;
             stroke-linecap: round;
-            opacity: 0.6;
+            stroke-linejoin: round;
+            vector-effect: non-scaling-stroke;
         }
+        .mountain-back  { stroke-width: 1.2; opacity: 0.35; }
+        .mountain-mid   { stroke-width: 1.5; opacity: 0.5; }
+        .mountain-front { stroke-width: 1.8; opacity: 0.65; }
+        .mountain-contour { stroke-width: 1; stroke-dasharray: 4 6; opacity: 0.3; }
     </style>
 </head>
 <body class="antialiased relative">
 
-    <div class="threads-container">
-        <!-- Hilo 1: Cruza la parte superior a la sección 1 -->
-        <svg class="absolute top-[500px] left-0 w-full h-[800px]" preserveAspectRatio="none" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="thread-path" d="M -100,50 C 200,-50 300,200 500,100 S 800,300 1000,150 S 1300,-50 1500,100" />
-            <path class="thread-path" d="M -50,100 C 150,300 350,-50 600,150 S 900,400 1100,200 S 1350,-20 1600,250" />
-            <path class="thread-path" d="M -200,600 C 100,400 200,700 400,500 S 800,800 1200,500 S 1500,700 1600,600" />
-        </svg>
-
-        <!-- Hilo 2: Cruza la sección de Historias hacia abajo -->
-        <svg class="absolute top-[1800px] left-0 w-full h-[1200px]" preserveAspectRatio="none" viewBox="0 0 1440 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="thread-path" d="M 1500,100 C 1200,50 1000,300 700,200 S 300,500 0,300" />
-            <path class="thread-path" d="M 1600,400 C 1300,600 1100,100 800,300 S 400,-50 -100,400" />
-            <path class="thread-path" d="M 1440,800 C 1000,1000 800,700 400,900 S 100,1100 -50,1000" />
-        </svg>
-    </div>
-
-    <header class="relative bg-primary text-white min-h-[90vh] flex flex-col">
-        <!-- Imagen de fondo placeholder con opacidad -->
-        <div class="absolute inset-0 z-0">
-            <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la ruta de tu imagen de fondo para el Hero -->
-            <img src="ImagenesCercap\Captura de pantalla 2026-09-09 203918.png" alt="Hero Background" class="w-full h-full object-cover opacity-40 mix-blend-multiply">
-        </div>
-
-        <!-- Navbar -->
-        <nav class="relative z-10 w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center border-b border-white/20">
-            <div class="flex items-center gap-2">
-                <!-- Placeholder Logo -->
-                <div class="w-10 h-10 border border-white rounded-full flex items-center justify-center">
-                    <span class="text-xs font-bold">Logo</span>
-                </div>
-                <div class="text-sm font-medium leading-tight">
-                    Mencap - CDFC<br>
+    <!-- =================================================================== -->
+    <!-- Barra Superior Fija para la Vista "¿Quiénes somos?"                  -->
+    <!-- =================================================================== -->
+    <div id="quienes-sticky-nav" class="sticky top-0 z-50 hidden" style="background: #2C509C;">
+        <nav class="relative z-10 w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center" style="border-bottom: 1px solid rgba(255,255,255,0.20)">
+            <!-- Brand -->
+            <button onclick="navigate('home')" class="flex items-center gap-3 text-left">
+                <img src="ImagenesCercap/isologo-cercap.png" alt="Cercap logo" class="h-10 w-auto object-contain flex-shrink-0">
+                <div class="text-sm font-medium leading-tight text-white text-left">
+                    Cercap – CDRO<br>
                     <span class="text-xs font-light opacity-80">Centro Regional de Capacitación...</span>
                 </div>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#" class="hover:opacity-80 transition">Página</a>
-                <a href="#" class="hover:opacity-80 transition">Página</a>
-                <a href="#" class="hover:opacity-80 transition">Shop</a>
-                <a href="#" class="border border-white px-5 py-2 hover:bg-white hover:text-primary transition">Botón</a>
-            </div>
-        </nav>
+            </button>
 
-        <!-- Contenido del Hero -->
-        <div class="relative z-10 flex-grow flex items-center justify-start max-w-7xl mx-auto px-6 w-full">
-            <div class="max-w-xl">
-                <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-tight">info</h1>
-                <p class="text-lg md:text-xl font-light mb-8">Subtítulo con descripción</p>
-                <button class="bg-dark text-white px-8 py-3 rounded hover:bg-black transition text-sm font-medium">
-                    Botón
+            <!-- Desktop links -->
+            <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-white">
+                <button onclick="navigate('quienes-somos')" class="hover:opacity-75 transition whitespace-nowrap font-bold border-b border-white pb-0.5">
+                    ¿Quiénes somos?
+                </button>
+                <button onclick="navigate('home', 'proyectos')" class="hover:opacity-75 transition whitespace-nowrap">
+                    ¿Qué hacemos?
+                </button>
+                <button onclick="scrollToSection('contacto')" class="hover:opacity-75 transition whitespace-nowrap">
+                    ¿Cómo ayudar?
+                </button>
+                <button onclick="navigate('home', 'por-que-cercap')" class="hover:opacity-75 transition whitespace-nowrap">
+                    Servicios
+                </button>
+                <button onclick="navigate('home', 'historias')" class="hover:opacity-75 transition whitespace-nowrap">
+                    Publicaciones
+                </button>
+                <button onclick="scrollToSection('contacto')" class="hover:opacity-75 transition whitespace-nowrap">
+                    Eventos
+                </button>
+                <a href="shop.html" class="hover:opacity-75 transition whitespace-nowrap flex items-center gap-1.5 text-yellow-300 font-semibold">
+                    <i class="fa-solid fa-store text-xs"></i>
+                    <span>Shop</span>
+                </a>
+                <button onclick="scrollToSection('contacto')" class="border border-white px-5 py-2 rounded-2xl hover:bg-white hover:text-primary transition text-sm font-medium ml-2 text-white">
+                    Contáctenos
                 </button>
             </div>
-        </div>
-    </header>
 
-    <main class="relative z-10">
-        
-        <section class="max-w-7xl mx-auto px-6 py-24">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1 relative">
-                    <!-- Decoración circular estilo hilo tras el texto -->
-                    <svg class="absolute -top-12 -left-12 w-32 h-32 text-gray-300 -z-10" viewBox="0 0 100 100" fill="none">
-                        <path d="M50 10 C 70 10, 90 30, 90 50 C 90 80, 70 90, 50 90 C 20 90, 10 70, 10 50 C 10 20, 30 10, 50 10 Z" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" />
-                    </svg>
-                    
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Encabezado</h2>
-                    <p class="text-gray-600 mb-8 text-lg">
-                        Un subtítulo para esta sección, tan largo o tan corto como quieras.
-                    </p>
-                    <button class="bg-dark text-white px-6 py-2 rounded hover:bg-black transition text-sm font-medium">
-                        Botón
+            <!-- Mobile hamburger -->
+            <button class="lg:hidden text-white focus:outline-none" onclick="toggleSubNavMenu()" aria-label="Abrir menú">
+                <svg id="subnav-hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <!-- Mobile dropdown menu -->
+            <div id="subnav-mobile-menu" class="hidden absolute top-full left-0 right-0 flex-col gap-1 px-6 py-4 z-50 shadow-2xl" style="background: #2C509C;">
+                <button onclick="navigate('home')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">Inicio</button>
+                <button onclick="navigate('quienes-somos')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition font-bold" style="border-color: rgba(255,255,255,0.15)">¿Quiénes somos?</button>
+                <button onclick="navigate('home', 'proyectos')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">¿Qué hacemos?</button>
+                <button onclick="scrollToSection('contacto')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">¿Cómo ayudar?</button>
+                <button onclick="navigate('home', 'por-que-cercap')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">Servicios</button>
+                <button onclick="navigate('home', 'historias')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">Publicaciones</button>
+                <button onclick="scrollToSection('contacto')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">Eventos</button>
+                <a href="shop.html" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition font-semibold text-yellow-300 flex items-center justify-between" style="border-color: rgba(255,255,255,0.15)">
+                    <span>Tienda Virtual (Shop)</span>
+                    <i class="fa-solid fa-store text-xs"></i>
+                </a>
+                <button onclick="scrollToSection('contacto')" class="mt-2 border border-white rounded-2xl text-white text-center px-5 py-2 text-sm font-medium hover:bg-white hover:text-primary transition">
+                    Contáctenos
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- VISTA PRINCIPAL: LANDING PAGE (Exacta a Web Page Mockup Design)     -->
+    <!-- =================================================================== -->
+    <div id="view-home" class="relative min-h-screen" style="background: #fff; color: #111827;">
+
+        <!-- Capas decorativas de montañas y sol de fondo -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+            <!-- Sol decorativo flotante -->
+            <svg class="absolute right-8 sm:right-16 md:right-28 w-24 h-24 sm:w-28 sm:h-28 z-0 pointer-events-none" style="top: 630px;" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="18" class="mountain-path mountain-front" />
+                <circle cx="50" cy="50" r="26" class="mountain-path mountain-contour" />
+                <line x1="50" y1="10" x2="50" y2="22" class="mountain-path mountain-mid" />
+                <line x1="50" y1="78" x2="50" y2="90" class="mountain-path mountain-mid" />
+                <line x1="10" y1="50" x2="22" y2="50" class="mountain-path mountain-mid" />
+                <line x1="78" y1="50" x2="90" y2="50" class="mountain-path mountain-mid" />
+                <line x1="22" y1="22" x2="30" y2="30" class="mountain-path mountain-mid" />
+                <line x1="70" y1="70" x2="78" y2="78" class="mountain-path mountain-mid" />
+                <line x1="22" y1="78" x2="30" y2="70" class="mountain-path mountain-mid" />
+                <line x1="70" y1="30" x2="78" y2="22" class="mountain-path mountain-mid" />
+            </svg>
+
+            <!-- Silueta de montañas superior -->
+            <svg class="absolute left-0 w-full pointer-events-none z-0" style="top: 650px; height: 750px;" preserveAspectRatio="none" viewBox="0 0 1440 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="mountain-path mountain-back" d="M -60,430 C 110,410 210,250 330,230 C 420,210 490,330 590,350 C 690,370 780,270 900,240 C 1000,210 1080,310 1210,290 C 1310,270 1420,180 1500,170 C 1540,165 1580,200 1620,230" />
+                <path class="mountain-path mountain-contour" d="M 330,230 C 350,300 380,370 420,430" />
+                <path class="mountain-path mountain-contour" d="M 900,240 C 890,310 860,370 820,440" />
+                <path class="mountain-path mountain-mid" d="M -60,510 C 80,490 200,360 310,350 C 410,340 500,420 610,400 C 720,380 800,320 920,300 C 1030,280 1110,380 1230,370 C 1340,360 1440,290 1540,280" />
+                <path class="mountain-path mountain-front" d="M -60,600 C 160,590 290,470 450,460 C 600,450 720,530 870,500 C 1020,470 1170,530 1320,510 C 1440,490 1540,530 1650,540" />
+            </svg>
+
+            <!-- Silueta de montañas inferior -->
+            <svg class="absolute left-0 w-full pointer-events-none z-0" style="top: 2800px; height: 850px;" preserveAspectRatio="none" viewBox="0 0 1440 850" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="mountain-path mountain-back" d="M -60,430 C 110,410 210,250 330,230 C 420,210 490,330 590,350 C 690,370 780,270 900,240 C 1000,210 1080,310 1210,290 C 1310,270 1420,180 1500,170 C 1540,165 1580,200 1620,230" />
+                <path class="mountain-path mountain-contour" d="M 330,230 C 350,300 380,370 420,430" />
+                <path class="mountain-path mountain-contour" d="M 900,240 C 890,310 860,370 820,440" />
+                <path class="mountain-path mountain-mid" d="M -60,510 C 80,490 200,360 310,350 C 410,340 500,420 610,400 C 720,380 800,320 920,300 C 1030,280 1110,380 1230,370 C 1340,360 1440,290 1540,280" />
+                <path class="mountain-path mountain-front" d="M -60,600 C 160,590 290,470 450,460 C 600,450 720,530 870,500 C 1020,470 1170,530 1320,510 C 1440,490 1540,530 1650,540" />
+            </svg>
+        </div>
+
+        <!-- 1. Hero -->
+        <header class="relative text-white flex flex-col overflow-hidden" style="background: #2C509C; min-height: 90vh;">
+            <!-- Hero background image -->
+            <img src="ImagenesCercap/Captura de pantalla 2026-09-09 203918.png" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover z-0" style="opacity: 0.20; mix-blend-mode: luminosity;">
+            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(44,80,156,0.50) 0%, rgba(44,80,156,0.88) 100%);"></div>
+
+            <!-- Navbar -->
+            <nav class="relative z-10 w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center" style="border-bottom: 1px solid rgba(255,255,255,0.20);">
+                <!-- Brand -->
+                <button onclick="navigate('home')" class="flex items-center gap-3 text-left">
+                    <img src="ImagenesCercap/isologo-cercap.png" alt="Cercap logo" class="h-10 w-auto object-contain flex-shrink-0">
+                    <div class="text-sm font-medium leading-tight text-white text-left">
+                        Cercap – CDRO<br>
+                        <span class="text-xs font-light opacity-80">Centro Regional de Capacitación...</span>
+                    </div>
+                </button>
+
+                <!-- Desktop links -->
+                <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-white">
+                    <button onclick="navigate('quienes-somos')" class="hover:opacity-75 transition whitespace-nowrap">
+                        ¿Quiénes somos?
+                    </button>
+                    <button onclick="navigate('home', 'proyectos')" class="hover:opacity-75 transition whitespace-nowrap">
+                        ¿Qué hacemos?
+                    </button>
+                    <button onclick="scrollToSection('contacto')" class="hover:opacity-75 transition whitespace-nowrap">
+                        ¿Cómo ayudar?
+                    </button>
+                    <button onclick="navigate('home', 'por-que-cercap')" class="hover:opacity-75 transition whitespace-nowrap">
+                        Servicios
+                    </button>
+                    <button onclick="navigate('home', 'historias')" class="hover:opacity-75 transition whitespace-nowrap">
+                        Publicaciones
+                    </button>
+                    <button onclick="scrollToSection('contacto')" class="hover:opacity-75 transition whitespace-nowrap">
+                        Eventos
+                    </button>
+                    <a href="shop.html" class="hover:opacity-75 transition whitespace-nowrap flex items-center gap-1.5 text-yellow-300 font-semibold">
+                        <i class="fa-solid fa-store text-xs"></i>
+                        <span>Shop</span>
+                    </a>
+                    <button onclick="scrollToSection('contacto')" class="border border-white px-5 py-2 rounded-2xl hover:bg-white hover:text-primary transition text-sm font-medium ml-2 text-white">
+                        Contáctenos
                     </button>
                 </div>
-                <div class="order-1 md:order-2">
-                    <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la ruta de tu imagen para la primera sección -->
-                    <img src="https://placehold.co/600x400/e5e7eb/6b7280?text=Imagen+Seccion+1" alt="Sección 1" class="w-full h-auto rounded shadow-lg object-cover aspect-video">
+
+                <!-- Mobile hamburger -->
+                <button class="lg:hidden text-white focus:outline-none" onclick="toggleHeroMenu()" aria-label="Abrir menú">
+                    <svg id="hero-hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <!-- Mobile menu -->
+                <div id="hero-mobile-menu" class="hidden absolute top-full left-0 right-0 flex-col gap-1 px-6 py-4 z-50 shadow-2xl" style="background: #2C509C;">
+                    <button onclick="navigate('quienes-somos')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition font-semibold" style="border-color: rgba(255,255,255,0.15)">¿Quiénes somos?</button>
+                    <button onclick="navigate('home', 'proyectos')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">¿Qué hacemos?</button>
+                    <button onclick="scrollToSection('contacto')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">¿Cómo ayudar?</button>
+                    <button onclick="navigate('home', 'por-que-cercap')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">Servicios</button>
+                    <button onclick="navigate('home', 'historias')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">Publicaciones</button>
+                    <button onclick="scrollToSection('contacto')" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition" style="border-color: rgba(255,255,255,0.15)">Eventos</button>
+                    <a href="shop.html" class="text-white text-sm py-2 border-b text-left hover:opacity-75 transition font-semibold text-yellow-300 flex items-center justify-between" style="border-color: rgba(255,255,255,0.15)">
+                        <span>Tienda Virtual (Shop)</span>
+                        <i class="fa-solid fa-store text-xs"></i>
+                    </a>
+                    <button onclick="scrollToSection('contacto')" class="mt-2 border border-white rounded-2xl text-white text-center px-5 py-2 text-sm font-medium hover:bg-white hover:text-primary transition">
+                        Contáctenos
+                    </button>
                 </div>
+            </nav>
+
+            <div class="relative z-10 flex-grow flex items-center justify-start max-w-7xl mx-auto px-6 py-12 w-full">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: rgba(255,255,255,0.85);">
+                        Centro Regional de Capacitación
+                    </div>
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
+                        Cercap-CDRO
+                    </h1>
+                    <p class="text-base md:text-xl font-light mb-8 leading-relaxed opacity-90 max-w-2xl">
+                        El Centro Regional de Capacitación para la Participación Comunitaria con sus siglas CERCAP es un sistema regional dedicado al impulso del modelo de desarrollo integral, equitativo y sustentable, basado en la filosofía y metodología de la participación comunitaria desarrollada por la Asociación CDRO.
+                    </p>
+                    <button onclick="scrollToSection('proyectos')" class="px-8 py-3 rounded-2xl text-sm font-medium transition" style="background: #2C509C; color: #fff;" onmouseenter="this.style.background='#1f3a73'" onmouseleave="this.style.background='#2C509C'">
+                        Conoce más
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="relative z-10">
+
+            <!-- 2. ProjectSection: Juega Conmigo -->
+            <section id="proyectos" class="max-w-7xl mx-auto px-6 py-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="relative z-10 bg-white p-6 sm:p-8 rounded-2xl shadow-sm order-2 md:order-1" style="border: 1px solid #2C509C;">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #111827;">
+                            Juega Conmigo
+                        </h2>
+                        <p class="mb-8 text-lg leading-relaxed" style="color: #4B5563;">
+                            Proyecto orientado al desarrollo infantil temprano a través del juego comunitario, promoviendo la creatividad y el bienestar de los niños en las comunidades rurales.
+                        </p>
+                        <button onclick="scrollToSection('participantes')" class="px-6 py-2.5 rounded-2xl text-sm font-medium text-white transition" style="background: #2C509C;" onmouseenter="this.style.background='#1f3a73'" onmouseleave="this.style.background='#2C509C'">
+                            Leer más
+                        </button>
+                    </div>
+                    <div class="relative z-10 order-1 md:order-2">
+                        <img src="ImagenesCercap/Captura de pantalla 2026-09-17 165613.png" alt="Imagen del proyecto Juega Conmigo" class="w-full shadow-lg aspect-video object-cover rounded-xl" style="border: 3px solid #2C509C;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. ProjectSection: Promoviendo el desarrollo infantil (reversed) -->
+            <section class="max-w-7xl mx-auto px-6 py-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="relative z-10 order-1 md:order-1">
+                        <img src="ImagenesCercap/Captura de pantalla 2026-09-17 165917.png" alt="Imagen del proyecto infantil y juventud" class="w-full shadow-lg aspect-video object-cover rounded-xl" style="border: 3px solid #2C509C;">
+                    </div>
+                    <div class="relative z-10 bg-white p-6 sm:p-8 rounded-2xl shadow-sm order-2 md:order-2" style="border: 1px solid #2C509C;">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #111827;">
+                            Promoviendo el desarrollo infantil y su transición a la juventud
+                        </h2>
+                        <p class="mb-8 text-lg leading-relaxed" style="color: #4B5563;">
+                            Proyecto enfocado en acompañar a niños y jóvenes en las transiciones clave de su vida, fortaleciendo sus capacidades y oportunidades de desarrollo.
+                        </p>
+                        <button onclick="scrollToSection('participantes')" class="px-6 py-2.5 rounded-2xl text-sm font-medium text-white transition" style="background: #2C509C;" onmouseenter="this.style.background='#1f3a73'" onmouseleave="this.style.background='#2C509C'">
+                            Leer más
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. ParticipantsSection (Exacto a Mockup) -->
+            <section id="participantes" class="py-24 relative z-10" style="background-color: #EDEDEE;">
+                <div class="max-w-7xl mx-auto px-6">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-10" style="color: #111827;">
+                        Participantes de nuestros proyectos
+                    </h2>
+                    <div class="flex justify-center">
+                        <img src="ImagenesCercap/Captura de pantalla 2026-09-17 172550.png" alt="Infografía de participantes de nuestros proyectos" class="w-full max-w-5xl h-auto object-contain mx-auto rounded-xl shadow-md" style="border: 3px solid #2C509C;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. StoriesSection -->
+            <section id="historias" class="py-24 relative overflow-hidden" style="background-color: #F9FAFB;">
+                <!-- Decorative mountain silhouettes -->
+                <svg class="absolute bottom-0 left-0 w-full pointer-events-none" style="height: 320px; opacity: 1;" preserveAspectRatio="none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="mountain-path mountain-back" d="M -60,200 C 110,185 210,100 330,90 C 420,80 490,140 590,150 C 690,160 780,100 900,80 C 1000,60 1080,130 1210,110 C 1310,90 1420,40 1500,30 L 1500,320 L -60,320 Z" style="opacity: 0.08; fill: #374151; stroke: #374151;" />
+                    <path class="mountain-path mountain-back" d="M -60,200 C 110,185 210,100 330,90 C 420,80 490,140 590,150 C 690,160 780,100 900,80 C 1000,60 1080,130 1210,110 C 1310,90 1420,40 1500,30" />
+                    <path class="mountain-path mountain-contour" d="M 330,90 C 350,130 375,165 410,200" />
+                    <path class="mountain-path mountain-contour" d="M 900,80 C 888,120 862,158 828,200" />
+                    <path class="mountain-path mountain-mid" d="M -60,220 C 80,208 200,140 310,130 C 410,120 500,175 610,160 C 720,145 800,110 920,92 C 1030,74 1110,155 1230,145 C 1340,135 1440,95 1540,85" />
+                    <path class="mountain-path mountain-front" d="M -60,265 C 160,255 290,185 450,175 C 600,165 720,225 870,200 C 1020,175 1170,220 1320,200 C 1440,183 1540,215 1650,220" />
+                </svg>
+
+                <!-- Decorative sun — top right -->
+                <svg class="absolute pointer-events-none" style="top: 32px; right: 48px; width: 80px; height: 80px; opacity: 0.55;" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="18" class="mountain-path mountain-front" />
+                    <circle cx="50" cy="50" r="26" class="mountain-path mountain-contour" />
+                    <line x1="50" y1="10" x2="50" y2="22" class="mountain-path mountain-mid" />
+                    <line x1="50" y1="78" x2="50" y2="90" class="mountain-path mountain-mid" />
+                    <line x1="10" y1="50" x2="22" y2="50" class="mountain-path mountain-mid" />
+                    <line x1="78" y1="50" x2="90" y2="50" class="mountain-path mountain-mid" />
+                    <line x1="22" y1="22" x2="30" y2="30" class="mountain-path mountain-mid" />
+                    <line x1="70" y1="70" x2="78" y2="78" class="mountain-path mountain-mid" />
+                    <line x1="22" y1="78" x2="30" y2="70" class="mountain-path mountain-mid" />
+                    <line x1="70" y1="30" x2="78" y2="22" class="mountain-path mountain-mid" />
+                </svg>
+
+                <div class="relative z-10 max-w-7xl mx-auto px-6">
+                    <h2 class="text-3xl font-bold mb-12" style="color: #111827;">
+                        Historias relevantes
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                        <!-- Featured -->
+                        <div class="md:col-span-7 flex flex-col bg-white p-6 rounded-2xl shadow-sm" style="border: 1px solid #2C509C;">
+                            <img src="ImagenesCercap/Captura de pantalla 2026-09-09 205835.png" alt="Historia empresarial" class="w-full h-[380px] md:h-[460px] object-cover rounded-xl mb-4 shadow-sm" style="border: 3px solid #2C509C;">
+                            <h3 class="text-xl font-bold mb-1" style="color: #111827;">Historia empresarial</h3>
+                            <p class="text-sm" style="color: #4B5563;">Descripción del proyecto destacado.</p>
+                        </div>
+
+                        <!-- Side cards -->
+                        <div class="md:col-span-5 flex flex-col gap-8">
+                            <div class="bg-white p-5 rounded-2xl shadow-sm" style="border: 1px solid #2C509C;">
+                                <img src="ImagenesCercap/Captura de pantalla 2026-09-09 205217.png" alt="Proyecto" class="w-full h-44 md:h-48 object-cover rounded-xl mb-4 shadow-sm" style="border: 2px solid #2C509C;">
+                                <h3 class="text-lg font-bold mb-1" style="color: #111827;">Proyecto</h3>
+                                <p class="text-sm mb-1" style="color: #4B5563;">Descripción del proyecto principal.</p>
+                                <p class="font-semibold" style="color: #111827;">Q10.99</p>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl shadow-sm" style="border: 1px solid #2C509C;">
+                                <img src="ImagenesCercap/Captura de pantalla 2026-09-09 203918.png" alt="Proyecto" class="w-full h-44 md:h-48 object-cover rounded-xl mb-4 shadow-sm" style="border: 2px solid #2C509C;">
+                                <h3 class="text-lg font-bold mb-1" style="color: #111827;">Proyecto</h3>
+                                <p class="text-sm mb-1" style="color: #4B5563;">Descripción del proyecto de menor categoría.</p>
+                                <p class="font-semibold" style="color: #111827;">Q10.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. MapSection (Reemplazo del mapa interactivo con la estructura exacta del mockup) -->
+            <section id="cobertura" class="py-24 relative z-10" style="background: #fff;">
+                <div class="max-w-7xl mx-auto px-6 py-8">
+                    <div class="mb-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                            Cobertura geográfica
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold" style="color: #111827;">
+                            Nuestra cobertura en Guatemala
+                        </h2>
+                        <p class="mt-3 text-base leading-relaxed max-w-2xl" style="color: #4B5563;">
+                            El programa Cercap-CDRO opera en múltiples departamentos del país, fortaleciendo comunidades a través de la capacitación y el desarrollo comunitario.
+                        </p>
+                    </div>
+
+                    <!-- Map container -->
+                    <div class="relative w-full rounded-2xl overflow-hidden flex items-center justify-center shadow-sm" style="background: #EDEDEF; min-height: 420px; border: 3px solid #2C509C;">
+                        <img src="ImagenesCercap/image-2.png" alt="Cobertura geográfica Cercap-CDRO" class="w-full h-full object-contain" style="max-height: 500px;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. FeaturesSection -->
+            <section id="por-que-cercap" class="relative overflow-hidden px-6 py-24" style="background: #fff;">
+                <!-- Decorative mountain silhouettes -->
+                <svg class="absolute bottom-0 left-0 w-full pointer-events-none" style="height: 280px;" preserveAspectRatio="none" viewBox="0 0 1440 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="mountain-path mountain-back" d="M -60,160 C 100,145 200,70 330,55 C 430,42 510,110 620,118 C 730,126 820,65 950,48 C 1060,33 1150,105 1280,88 C 1380,74 1450,28 1540,18" />
+                    <path class="mountain-path mountain-contour" d="M 330,55 C 348,100 368,148 395,180" />
+                    <path class="mountain-path mountain-contour" d="M 950,48 C 935,92 908,138 872,180" />
+                    <path class="mountain-path mountain-mid" d="M -60,190 C 85,175 195,110 315,100 C 415,90 510,148 625,132 C 740,116 820,82 945,65 C 1055,50 1140,125 1260,112 C 1365,100 1450,62 1540,52" />
+                    <path class="mountain-path mountain-front" d="M -60,240 C 155,228 285,158 455,148 C 610,138 725,208 880,182 C 1030,156 1185,208 1335,188 C 1450,172 1545,200 1650,206" />
+                </svg>
+
+                <!-- Decorative sun — top left -->
+                <svg class="absolute pointer-events-none" style="top: 40px; left: 56px; width: 72px; height: 72px; opacity: 0.50;" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="18" class="mountain-path mountain-front" />
+                    <circle cx="50" cy="50" r="26" class="mountain-path mountain-contour" />
+                    <line x1="50" y1="10" x2="50" y2="22" class="mountain-path mountain-mid" />
+                    <line x1="50" y1="78" x2="50" y2="90" class="mountain-path mountain-mid" />
+                    <line x1="10" y1="50" x2="22" y2="50" class="mountain-path mountain-mid" />
+                    <line x1="78" y1="50" x2="90" y2="50" class="mountain-path mountain-mid" />
+                    <line x1="22" y1="22" x2="30" y2="30" class="mountain-path mountain-mid" />
+                    <line x1="70" y1="70" x2="78" y2="78" class="mountain-path mountain-mid" />
+                    <line x1="22" y1="78" x2="30" y2="70" class="mountain-path mountain-mid" />
+                    <line x1="70" y1="30" x2="78" y2="22" class="mountain-path mountain-mid" />
+                </svg>
+
+                <div class="relative z-10 max-w-7xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-16 pb-4" style="color: #111827; border-bottom: 1px solid #E5E7EB;">
+                        ¿Por qué Cercap-CDRO?
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Card 1 -->
+                        <div class="relative bg-white p-6 rounded-2xl shadow-sm" style="border: 3px solid #2C509C;">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-lg mb-4" style="background: rgba(44,80,156,0.10); color: #2C509C;">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707m12.728 0-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2" style="color: #111827;">
+                                Desarrollo comunitario
+                            </h3>
+                            <p class="text-sm leading-relaxed" style="color: #4B5563;">
+                                Impulsamos el crecimiento integral de las comunidades a través de programas participativos y sostenibles.
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="relative bg-white p-6 rounded-2xl shadow-sm" style="border: 3px solid #2C509C;">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-lg mb-4" style="background: rgba(44,80,156,0.10); color: #2C509C;">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2" style="color: #111827;">
+                                Participación inclusiva
+                            </h3>
+                            <p class="text-sm leading-relaxed" style="color: #4B5563;">
+                                Fomentamos la participación de todos los sectores de la comunidad en los procesos de toma de decisiones.
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="relative bg-white p-6 rounded-2xl shadow-sm" style="border: 3px solid #2C509C;">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-lg mb-4" style="background: rgba(44,80,156,0.10); color: #2C509C;">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2" style="color: #111827;">
+                                Sostenibilidad
+                            </h3>
+                            <p class="text-sm leading-relaxed" style="color: #4B5563;">
+                                Cada proyecto está diseñado para ser sostenible en el tiempo y respetando el medio ambiente.
+                            </p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="relative bg-white p-6 rounded-2xl shadow-sm" style="border: 3px solid #2C509C;">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-lg mb-4" style="background: rgba(44,80,156,0.10); color: #2C509C;">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2" style="color: #111827;">
+                                Planificación estratégica
+                            </h3>
+                            <p class="text-sm leading-relaxed" style="color: #4B5563;">
+                                Trabajamos con calendarios y planificación detallada para maximizar el impacto de cada intervención.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Global -->
+        <footer id="contacto" class="mt-12 bg-white relative z-10" style="border-top: 1px solid #E5E7EB;">
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <div class="flex flex-col md:flex-row justify-between gap-12">
+                    <!-- Brand -->
+                    <div class="flex flex-col gap-4 w-full md:w-1/3">
+                        <h4 class="font-bold text-lg" style="color: #111827;">Cercap – CDRO</h4>
+                        <p class="text-xs leading-relaxed" style="color: #4B5563;">
+                            Centro Regional de Capacitación para la Participación Comunitaria. Asociación CDRO.
+                        </p>
+                        <!-- Social icons -->
+                        <div class="flex gap-4" style="color: #6B7280;">
+                            <a href="#" aria-label="Instagram" class="hover:text-primary transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="hover:text-primary transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                            <a href="#" aria-label="YouTube" class="hover:text-primary transition"><i class="fa-brands fa-youtube text-lg"></i></a>
+                            <a href="#" aria-label="Twitter/X" class="hover:text-primary transition"><i class="fa-brands fa-twitter text-lg"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Link columns -->
+                    <div class="w-full md:w-2/3 grid grid-cols-3 gap-4">
+                        <div class="flex flex-col gap-3">
+                            <h5 class="font-semibold text-sm mb-1" style="color: #111827;">Organización</h5>
+                            <button onclick="navigate('quienes-somos')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">¿Quiénes somos?</button>
+                            <button onclick="navigate('home', 'proyectos')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">¿Qué hacemos?</button>
+                            <button onclick="navigate('quienes-somos')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Historia</button>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h5 class="font-semibold text-sm mb-1" style="color: #111827;">Programas</h5>
+                            <button onclick="navigate('home', 'por-que-cercap')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Servicios</button>
+                            <button onclick="navigate('home', 'proyectos')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Proyectos</button>
+                            <button onclick="scrollToSection('contacto')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">¿Cómo ayudar?</button>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h5 class="font-semibold text-sm mb-1" style="color: #111827;">Recursos</h5>
+                            <button onclick="navigate('home', 'historias')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Publicaciones</button>
+                            <button onclick="scrollToSection('contacto')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Eventos</button>
+                            <a href="shop.html" class="text-xs font-semibold text-primary hover:text-dark transition flex items-center gap-1">
+                                <span>Tienda / Shop</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs" style="border-top: 1px solid #E5E7EB; color: #9CA3AF;">
+                    <span>© 2026 Cercap – CDRO. Todos los derechos reservados.</span>
+                    <span>Asociación CDRO · Guatemala</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- VISTA 2: ¿QUIÉNES SOMOS? (Exacta a QuienesSomos.tsx del Mockup)    -->
+    <!-- =================================================================== -->
+    <div id="view-quienes-somos" class="relative min-h-screen hidden" style="background: #fff; color: #111827;">
+
+        <!-- 1. Page Hero -->
+        <section class="relative flex flex-col justify-end overflow-hidden" style="background: #2C509C; min-height: 340px;">
+            <!-- Hero background image -->
+            <img src="ImagenesCercap/image.png" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover z-0" style="opacity: 0.22; mix-blend-mode: luminosity;">
+            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(44,80,156,0.60) 0%, rgba(44,80,156,0.92) 100%);"></div>
+
+            <!-- Mountains bottom -->
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden z-10" style="height: 120px;">
+                <svg class="w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1440 120" fill="none">
+                    <path class="mountain-path mountain-back" d="M -60,60 C 120,50 220,20 360,16 C 480,12 560,44 680,48 C 800,52 900,24 1040,18 C 1160,12 1280,40 1440,36" />
+                    <path class="mountain-path mountain-front" d="M -60,95 C 180,88 330,58 520,52 C 700,46 840,80 1020,68 C 1200,56 1340,76 1540,80" />
+                </svg>
+            </div>
+
+            <div class="relative z-20 max-w-7xl mx-auto px-6 pb-16 pt-12 w-full">
+                <button onclick="navigate('home')" class="flex items-center gap-2 text-sm font-medium mb-6 opacity-75 hover:opacity-100 transition text-white">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Inicio
+                </button>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: white;">
+                    Nuestra organización
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white">
+                    ¿Quiénes somos?
+                </h1>
             </div>
         </section>
 
-        <section class="max-w-7xl mx-auto px-6 py-24">
+        <!-- 2. Definición institucional -->
+        <section class="max-w-7xl mx-auto px-6 py-20">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la ruta de tu imagen para la segunda sección -->
-                    <img src="https://placehold.co/600x400/e5e7eb/6b7280?text=Imagen+Seccion+2" alt="Sección 2" class="w-full h-auto rounded shadow-lg object-cover aspect-video">
-                </div>
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Encabezado</h2>
-                    <p class="text-gray-600 mb-8 text-lg">
-                        Un subtítulo para esta sección, tan largo o tan corto como quieras.
+                <div class="bg-white p-8 rounded-2xl shadow-sm" style="border: 1px solid #1C2236;">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        Definición institucional
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: #111827;">
+                        Centro Regional de Capacitación
+                    </h2>
+                    <p class="text-base leading-relaxed mb-4" style="color: #4B5563;">
+                        El Centro Regional de Capacitación para la Participación Comunitaria con sus siglas CERCAP es un sistema regional dedicado al impulso del modelo de desarrollo integral, equitativo y sustentable, basado en la filosofía y metodología de la participación comunitaria desarrollada por la Asociación CDRO.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <button class="bg-dark text-white px-6 py-2 rounded hover:bg-black transition text-sm font-medium">
-                            Botón
-                        </button>
-                        <button class="bg-gray-200 text-dark px-6 py-2 rounded hover:bg-gray-300 transition text-sm font-medium">
-                            Botón secundario
-                        </button>
+                    <p class="text-base leading-relaxed" style="color: #4B5563;">
+                        Su trabajo se fundamenta en la creación de capacidades humanas, sociales, físicas, financieras y naturales a nivel local que permitan el desarrollo integral, desarrollando a través de la organización comunitaria, proyectos, programas e instituciones que atiendan las necesidades y problemáticas y mejoren las condiciones sociales, económicas, políticas, ambientales y culturales de familias, mujeres, jóvenes, niños y comunidades rurales en general.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center justify-center gap-3 rounded-2xl overflow-hidden w-full aspect-video shadow-lg" style="border: 3px solid #1C2236; background: #EDEDEE; min-height: 200px;">
+                    <svg class="w-10 h-10 text-gray-400 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-medium px-4 text-center">[Espacio para imagen institucional]</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Objetivo General -->
+        <section class="py-20 relative overflow-hidden" style="background-color: #F9FAFB;">
+            <!-- Mountain SVG inline -->
+            <svg class="absolute bottom-0 left-0 w-full pointer-events-none" style="height: 200px;" preserveAspectRatio="none" viewBox="0 0 1440 200" fill="none">
+                <path class="mountain-path mountain-back" d="M -60,120 C 110,108 210,55 330,44 C 420,36 490,80 590,85 C 690,90 780,50 900,38 C 1000,28 1080,72 1210,58 C 1310,46 1420,18 1500,12" />
+                <path class="mountain-path mountain-mid"  d="M -60,140 C 80,130 200,82 310,76 C 410,70 500,108 625,96 C 740,84 820,58 945,44 C 1055,32 1140,90 1260,78 C 1365,68 1450,40 1540,34" />
+                <path class="mountain-path mountain-front" d="M -60,170 C 155,162 285,112 455,104 C 610,96 725,142 880,124 C 1030,106 1185,138 1335,122 C 1450,108 1545,128 1650,132" />
+            </svg>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="flex flex-col items-center justify-center gap-3 rounded-2xl overflow-hidden w-full aspect-video shadow-lg" style="border: 3px solid #1C2236; background: #EDEDEE; min-height: 200px;">
+                        <svg class="w-10 h-10 text-gray-400 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                        </svg>
+                        <span class="text-xs text-gray-500 font-medium px-4 text-center">[Espacio para imagen objetivo general]</span>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm" style="border: 1px solid #1C2236;">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                            Propósito
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: #111827;">
+                            Objetivo General
+                        </h2>
+                        <p class="text-base leading-relaxed" style="color: #4B5563;">
+                            Mejorar las condiciones de vida de las y los habitantes de las comunidades rurales de la Región Occidental de Guatemala, de manera integral, equitativa y sostenible, estableciendo el modelo de la participación total de la comunidad.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-light py-24">
+        <!-- 4. Objetivos Específicos -->
+        <section class="max-w-7xl mx-auto px-6 py-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 pb-4" style="color: #111827; border-bottom: 1px solid #E5E7EB;">
+                Objetivos Específicos
+            </h2>
+            <p class="text-base mb-12" style="color: #4B5563;">
+                Líneas estratégicas que guían la acción de Cercap-CDRO en las comunidades.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div class="bg-white p-6 rounded-2xl shadow-sm flex flex-col gap-4" style="border: 1px solid #1C2236;">
+                    <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-bold text-white text-sm flex-shrink-0" style="background: #2C509C;">
+                        1
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color: #374151;">
+                        Brindar acompañamiento y asistencia técnica a las organizaciones para que implementen su modelo de desarrollo local.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm flex flex-col gap-4" style="border: 1px solid #1C2236;">
+                    <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-bold text-white text-sm flex-shrink-0" style="background: #2C509C;">
+                        2
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color: #374151;">
+                        Desarrollar capacidades en gobernabilidad, técnica y gerencial en las Organizaciones Comunitarias que permita contar con recurso humano propio para la implementación de su modelo de trabajo.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm flex flex-col gap-4" style="border: 1px solid #1C2236;">
+                    <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-bold text-white text-sm flex-shrink-0" style="background: #2C509C;">
+                        3
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color: #374151;">
+                        Facilitar a las organizaciones conocimiento e información estudiada y organizada en la temática relacionada al desarrollo rural y la participación total de la comunidad, permitiéndoles fortalecer sus programas o crear nuevos programas de trabajo.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center gap-3 rounded-2xl overflow-hidden w-full aspect-video max-w-3xl mx-auto shadow-md" style="border: 3px solid #1C2236; background: #EDEDEE; min-height: 200px;">
+                <svg class="w-10 h-10 text-gray-400 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                </svg>
+                <span class="text-xs text-gray-500 font-medium px-4 text-center">[Espacio para imagen objetivos específicos]</span>
+            </div>
+        </section>
+
+        <!-- 5. Misión -->
+        <section class="py-20 relative overflow-hidden" style="background: #2C509C;">
+            <!-- Mountain decor -->
+            <svg class="absolute bottom-0 left-0 w-full pointer-events-none opacity-20" style="height: 160px;" preserveAspectRatio="none" viewBox="0 0 1440 160" fill="none">
+                <path class="mountain-path mountain-mid" d="M -60,100 C 120,88 240,44 400,38 C 560,32 680,78 860,62 C 1040,46 1200,80 1440,68" />
+                <path class="mountain-path mountain-front" d="M -60,138 C 200,128 380,84 600,76 C 820,68 1020,110 1260,96 C 1380,90 1450,106 1540,110" />
+            </svg>
+
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: white;">
+                    Nuestra razón de ser
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white">Misión</h2>
+                <div class="bg-white p-8 rounded-2xl shadow-lg text-left" style="border: 2px solid #1C2236;">
+                    <div class="flex items-start gap-4">
+                        <img src="ImagenesCercap/isologo-cercap.png" alt="Cercap" class="h-12 w-auto object-contain flex-shrink-0 mt-1">
+                        <p class="text-lg leading-relaxed" style="color: #374151;">
+                            Impulsamos el desarrollo integral en la región a través del fortalecimiento organizativo, formación de recursos humanos, investigación y sistematización y compartimiento de experiencias, facilitando la participación comunitaria en los procesos de desarrollo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Principios y Valores -->
+        <section class="py-20 relative overflow-hidden" style="background: #fff;">
+            <!-- Sun decor -->
+            <svg class="absolute pointer-events-none" style="top: 32px; right: 64px; width: 72px; height: 72px; opacity: 0.45;" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="18" class="mountain-path mountain-front" />
+                <circle cx="50" cy="50" r="26" class="mountain-path mountain-contour" />
+                <line x1="50" y1="10" x2="50" y2="22" class="mountain-path mountain-mid" />
+                <line x1="50" y1="78" x2="50" y2="90" class="mountain-path mountain-mid" />
+                <line x1="10" y1="50" x2="22" y2="50" class="mountain-path mountain-mid" />
+                <line x1="78" y1="50" x2="90" y2="50" class="mountain-path mountain-mid" />
+                <line x1="22" y1="22" x2="30" y2="30" class="mountain-path mountain-mid" />
+                <line x1="70" y1="70" x2="78" y2="78" class="mountain-path mountain-mid" />
+                <line x1="22" y1="78" x2="30" y2="70" class="mountain-path mountain-mid" />
+                <line x1="70" y1="30" x2="78" y2="22" class="mountain-path mountain-mid" />
+            </svg>
+
             <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-3xl font-bold mb-12">Historias relevantes</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                    <!-- Elemento Grande (Izquierda) -->
-                    <div class="md:col-span-7 flex flex-col">
-                        <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la foto de tu Historia Empresarial o Producto Destacado -->
-                        <img src="https://placehold.co/800x600/e5e7eb/6b7280?text=Producto+Destacado" alt="Historia Empresarial" class="w-full h-[400px] md:h-[500px] object-cover rounded mb-4">
-                        <h3 class="text-xl font-bold mb-1">Historia empresarial</h3>
-                        <p class="text-gray-600 text-sm">Descripción del producto destacado.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 pb-4" style="color: #111827; border-bottom: 1px solid #E5E7EB;">
+                    Principios y Valores
+                </h2>
+                <p class="text-base mb-12" style="color: #4B5563;">
+                    Fundamentos que orientan nuestra filosofía y metodología de trabajo.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Participación total de la comunidad
                     </div>
-
-                    <!-- Elementos Pequeños (Derecha) -->
-                    <div class="md:col-span-5 flex flex-col gap-8">
-                        
-                        <!-- Producto Superior -->
-                        <div>
-                            <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la foto de tu primer producto -->
-                            <img src="https://placehold.co/600x300/e5e7eb/6b7280?text=Producto+Principal" alt="Producto" class="w-full h-48 md:h-56 object-cover rounded mb-4">
-                            <h3 class="text-lg font-bold mb-1">Producto</h3>
-                            <p class="text-gray-600 text-sm mb-1">Descripción del producto principal.</p>
-                            <p class="font-semibold">Q10.99</p>
-                        </div>
-
-                        <!-- Producto Inferior -->
-                        <div>
-                            <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la foto de tu segundo producto -->
-                            <img src="https://placehold.co/600x300/e5e7eb/6b7280?text=Producto+Menor" alt="Producto Menor" class="w-full h-48 md:h-56 object-cover rounded mb-4">
-                            <h3 class="text-lg font-bold mb-1">Producto</h3>
-                            <p class="text-gray-600 text-sm mb-1">Descripción del producto de menor categoría.</p>
-                            <p class="font-semibold">Q10.99</p>
-                        </div>
-
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(28,34,54,0.07); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Unidad
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(44,80,156,0.05); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Visión global
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Visión micro regional
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(28,34,54,0.07); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Visión regional
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(44,80,156,0.05); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Horizontalidad
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Equilibrio
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(28,34,54,0.07); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        La propiedad comunal
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(44,80,156,0.05); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Apoyo mutuo
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Marco cultural
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium" style="background: rgba(28,34,54,0.07); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2C509C;"></span>
+                        Complementariedad
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="max-w-7xl mx-auto px-6 py-24">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 border-b pb-4">Encabezado de sección</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                <!-- Feature 1 -->
-                <div>
-                    <div class="text-gray-400 mb-4">
-                        <i class="fa-solid fa-seedling text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Texto para lo que quieras decir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
-                    </p>
+        <!-- 7. Cobertura en Quienes Somos -->
+        <section class="py-20 relative overflow-hidden" style="background: #EDEDEE;">
+            <!-- Mountain SVG inline (top) -->
+            <svg class="absolute top-0 left-0 w-full pointer-events-none" style="height: 200px;" preserveAspectRatio="none" viewBox="0 0 1440 200" fill="none">
+                <path class="mountain-path mountain-back" d="M -60,120 C 110,108 210,55 330,44 C 420,36 490,80 590,85 C 690,90 780,50 900,38 C 1000,28 1080,72 1210,58 C 1310,46 1420,18 1500,12" />
+                <path class="mountain-path mountain-mid"  d="M -60,140 C 80,130 200,82 310,76 C 410,70 500,108 625,96 C 740,84 820,58 945,44 C 1055,32 1140,90 1260,78 C 1365,68 1450,40 1540,34" />
+                <path class="mountain-path mountain-front" d="M -60,170 C 155,162 285,112 455,104 C 610,96 725,142 880,124 C 1030,106 1185,138 1335,122 C 1450,108 1545,128 1650,132" />
+            </svg>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4" style="background: rgba(44,80,156,0.10); border: 1px solid rgba(44,80,156,0.20); color: #2C509C;">
+                    Área de trabajo
                 </div>
-                
-                <!-- Feature 2 -->
-                <div>
-                    <div class="text-gray-400 mb-4">
-                        <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #111827;">
+                    Cobertura
+                </h2>
+                <p class="text-base mb-12 max-w-2xl" style="color: #4B5563;">
+                    Cercap-CDRO opera en seis departamentos de la Región Occidental de Guatemala.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-12">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm flex flex-col items-center gap-2 text-center" style="border: 1px solid #1C2236;">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background: rgba(44,80,156,0.10);">
+                            <svg class="w-4 h-4" fill="none" stroke="#2C509C" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-semibold" style="color: #111827;">Quiché</span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Texto para lo que quieras sugerir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
-                    </p>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm flex flex-col items-center gap-2 text-center" style="border: 1px solid #1C2236;">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background: rgba(44,80,156,0.10);">
+                            <svg class="w-4 h-4" fill="none" stroke="#2C509C" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-semibold" style="color: #111827;">Sololá</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm flex flex-col items-center gap-2 text-center" style="border: 1px solid #1C2236;">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background: rgba(44,80,156,0.10);">
+                            <svg class="w-4 h-4" fill="none" stroke="#2C509C" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-semibold" style="color: #111827;">San Marcos</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm flex flex-col items-center gap-2 text-center" style="border: 1px solid #1C2236;">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background: rgba(44,80,156,0.10);">
+                            <svg class="w-4 h-4" fill="none" stroke="#2C509C" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-semibold" style="color: #111827;">Huehuetenango</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm flex flex-col items-center gap-2 text-center" style="border: 1px solid #1C2236;">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background: rgba(44,80,156,0.10);">
+                            <svg class="w-4 h-4" fill="none" stroke="#2C509C" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-semibold" style="color: #111827;">Quetzaltenango</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm flex flex-col items-center gap-2 text-center" style="border: 1px solid #1C2236;">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background: rgba(44,80,156,0.10);">
+                            <svg class="w-4 h-4" fill="none" stroke="#2C509C" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-semibold" style="color: #111827;">Totonicapán</span>
+                    </div>
                 </div>
 
-                <!-- Feature 3 -->
-                <div>
-                    <div class="text-gray-400 mb-4">
-                        <i class="fa-solid fa-lock text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Texto para lo que quieras afirmar. Agrega puntos clave, citas, anécdotas o una historia muy breve.
-                    </p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div>
-                    <div class="text-gray-400 mb-4">
-                        <i class="fa-solid fa-calendar-check text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Texto para lo que quieras escribir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
-                    </p>
+                <div class="flex flex-col items-center justify-center gap-3 rounded-2xl overflow-hidden w-full aspect-video max-w-3xl mx-auto shadow-md" style="border: 3px solid #1C2236; background: #EDEDEE; min-height: 200px;">
+                    <svg class="w-10 h-10 text-gray-400 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-medium px-4 text-center">[Espacio para imagen de cobertura]</span>
                 </div>
             </div>
         </section>
 
-    </main>
+        <!-- Footer dentro de QuienesSomos -->
+        <footer class="mt-12 bg-white relative z-10" style="border-top: 1px solid #E5E7EB;">
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <div class="flex flex-col md:flex-row justify-between gap-12">
+                    <!-- Brand -->
+                    <div class="flex flex-col gap-4 w-full md:w-1/3">
+                        <h4 class="font-bold text-lg" style="color: #111827;">Cercap – CDRO</h4>
+                        <p class="text-xs leading-relaxed" style="color: #4B5563;">
+                            Centro Regional de Capacitación para la Participación Comunitaria. Asociación CDRO.
+                        </p>
+                        <!-- Social icons -->
+                        <div class="flex gap-4" style="color: #6B7280;">
+                            <a href="#" aria-label="Instagram" class="hover:text-primary transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="hover:text-primary transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                            <a href="#" aria-label="YouTube" class="hover:text-primary transition"><i class="fa-brands fa-youtube text-lg"></i></a>
+                            <a href="#" aria-label="Twitter/X" class="hover:text-primary transition"><i class="fa-brands fa-twitter text-lg"></i></a>
+                        </div>
+                    </div>
 
-    <footer class="border-t border-gray-200 mt-12 bg-white relative z-10">
-        <div class="max-w-7xl mx-auto px-6 py-12">
-            <div class="flex flex-col md:flex-row justify-between gap-12">
-                
-                <!-- Marca y Redes (Izquierda) -->
-                <div class="flex flex-col gap-6 w-full md:w-1/3">
-                    <h4 class="font-bold text-lg">Nombre del sitio</h4>
-                    <div class="flex gap-4 text-gray-500">
-                        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-instagram text-xl"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-youtube text-xl"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    <!-- Link columns -->
+                    <div class="w-full md:w-2/3 grid grid-cols-3 gap-4">
+                        <div class="flex flex-col gap-3">
+                            <h5 class="font-semibold text-sm mb-1" style="color: #111827;">Organización</h5>
+                            <button onclick="navigate('quienes-somos')" class="text-xs transition text-left text-[#4B5563] hover:text-primary font-bold">¿Quiénes somos?</button>
+                            <button onclick="navigate('home', 'proyectos')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">¿Qué hacemos?</button>
+                            <button onclick="navigate('quienes-somos')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Historia</button>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h5 class="font-semibold text-sm mb-1" style="color: #111827;">Programas</h5>
+                            <button onclick="navigate('home', 'por-que-cercap')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Servicios</button>
+                            <button onclick="navigate('home', 'proyectos')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Proyectos</button>
+                            <button onclick="scrollToSection('contacto')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">¿Cómo ayudar?</button>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h5 class="font-semibold text-sm mb-1" style="color: #111827;">Recursos</h5>
+                            <button onclick="navigate('home', 'historias')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Publicaciones</button>
+                            <button onclick="scrollToSection('contacto')" class="text-xs transition text-left text-[#4B5563] hover:text-primary">Eventos</button>
+                            <a href="shop.html" class="text-xs font-semibold text-primary hover:text-dark transition flex items-center gap-1">
+                                <span>Tienda / Shop</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Enlaces (Derecha - 3 Columnas) -->
-                <div class="w-full md:w-2/3 grid grid-cols-3 gap-4">
-                    
-                    <!-- Columna 1 -->
-                    <div class="flex flex-col gap-3">
-                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                    </div>
-                    
-                    <!-- Columna 2 -->
-                    <div class="flex flex-col gap-3">
-                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                    </div>
-
-                    <!-- Columna 3 -->
-                    <div class="flex flex-col gap-3">
-                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                        <a href="#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
-                    </div>
-
+                <div class="mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs" style="border-top: 1px solid #E5E7EB; color: #9CA3AF;">
+                    <span>© 2026 Cercap – CDRO. Todos los derechos reservados.</span>
+                    <span>Asociación CDRO · Guatemala</span>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- Scripts de Navegación y Control de Pestañas                         -->
+    <!-- =================================================================== -->
+    <script>
+        function navigate(page, targetId) {
+            const homeView = document.getElementById('view-home');
+            const qsView = document.getElementById('view-quienes-somos');
+            const stickyNav = document.getElementById('quienes-sticky-nav');
+
+            // Close mobile menus if open
+            closeAllMenus();
+
+            if (page === 'quienes-somos') {
+                if (homeView) homeView.classList.add('hidden');
+                if (qsView) qsView.classList.remove('hidden');
+                if (stickyNav) stickyNav.classList.remove('hidden');
+
+                if (window.location.hash !== '#quienes-somos') {
+                    try { history.pushState({ page: 'quienes-somos' }, '', '#quienes-somos'); } catch(e) {}
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                if (qsView) qsView.classList.add('hidden');
+                if (stickyNav) stickyNav.classList.add('hidden');
+                if (homeView) homeView.classList.remove('hidden');
+
+                if (window.location.hash === '#quienes-somos') {
+                    try { history.pushState({ page: 'home' }, '', window.location.pathname); } catch(e) {}
+                }
+
+                if (targetId) {
+                    setTimeout(() => scrollToSection(targetId), 60);
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function toggleHeroMenu() {
+            const menu = document.getElementById('hero-mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            }
+        }
+
+        function toggleSubNavMenu() {
+            const menu = document.getElementById('subnav-mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            }
+        }
+
+        function closeAllMenus() {
+            const m1 = document.getElementById('hero-mobile-menu');
+            const m2 = document.getElementById('subnav-mobile-menu');
+            if (m1) { m1.classList.add('hidden'); m1.classList.remove('flex'); }
+            if (m2) { m2.classList.add('hidden'); m2.classList.remove('flex'); }
+        }
+
+        // Listener para botones Atrás/Adelante del navegador
+        window.addEventListener('hashchange', () => {
+            if (window.location.hash === '#quienes-somos') {
+                navigate('quienes-somos');
+            } else {
+                navigate('home');
+            }
+        });
+
+        // Comprobación de ruta al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash === '#quienes-somos') {
+                navigate('quienes-somos');
+            }
+        });
+    </script>
 </body>
 </html>

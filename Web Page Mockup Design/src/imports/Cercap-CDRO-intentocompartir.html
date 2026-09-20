@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html# -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cercap-CDRO</title>
+    
+    <script src="./Cercap-CDRO-intentocompartir_files/saved_resource"></script>
+    <link href="./Cercap-CDRO-intentocompartir_files/css2" rel="stylesheet">
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="./Cercap-CDRO-intentocompartir_files/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2C509C', // Tono azul solicitado
+                        dark: '#111827',
+                        light: '#F9FAFB'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111827;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Contenedor para las líneas y siluetas de paisaje (SVG decorativos) */
+        .threads-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .mountain-path {
+            fill: none;
+            stroke: #374151; /* Grafito elegante */
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .mountain-back {
+            stroke-width: 1.2;
+            opacity: 0.35;
+        }
+
+        .mountain-mid {
+            stroke-width: 1.5;
+            opacity: 0.5;
+        }
+
+        .mountain-front {
+            stroke-width: 1.8;
+            opacity: 0.65;
+        }
+
+        .mountain-contour {
+            stroke-width: 1;
+            stroke-dasharray: 4 6;
+            opacity: 0.3;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-0{left:0px}.right-8{right:2rem}.top-\[2800px\]{top:2800px}.top-\[630px\]{top:630px}.top-\[650px\]{top:650px}.z-0{z-index:0}.z-10{z-index:10}.order-1{order:1}.order-2{order:2}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-12{margin-top:3rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.aspect-video{aspect-ratio:16 / 9}.h-12{height:3rem}.h-24{height:6rem}.h-44{height:11rem}.h-\[380px\]{height:380px}.h-\[750px\]{height:750px}.h-\[850px\]{height:850px}.h-auto{height:auto}.h-full{height:100%}.min-h-\[90vh\]{min-height:90vh}.w-24{width:6rem}.w-auto{width:auto}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-5xl{max-width:64rem}.max-w-7xl{max-width:80rem}.flex-grow{flex-grow:1}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-16{gap:4rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-x-12{column-gap:3rem}.gap-y-16{row-gap:4rem}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-\[3px\]{border-width:3px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-\[\#1C2236\]{--tw-border-opacity:1;border-color:rgb(28 34 54 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-dark{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-light{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(44 80 156 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-4{padding-bottom:1rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-5xl{font-size:3rem;line-height:1}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.text-dark{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-40{opacity:0.4}.opacity-80{opacity:0.8}.mix-blend-multiply{mix-blend-mode:multiply}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-black:hover{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:text-primary:hover{--tw-text-opacity:1;color:rgb(44 80 156 / var(--tw-text-opacity, 1))}.hover\:opacity-80:hover{opacity:0.8}@media (min-width: 640px){.sm\:right-16{right:4rem}.sm\:h-28{height:7rem}.sm\:w-28{width:7rem}.sm\:p-8{padding:2rem}}@media (min-width: 768px){.md\:right-28{right:7rem}.md\:order-1{order:1}.md\:order-2{order:2}.md\:col-span-5{grid-column:span 5 / span 5}.md\:col-span-7{grid-column:span 7 / span 7}.md\:flex{display:flex}.md\:h-48{height:12rem}.md\:h-\[460px\]{height:460px}.md\:w-1\/3{width:33.333333%}.md\:w-2\/3{width:66.666667%}.md\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:text-8xl{font-size:6rem;line-height:1}}</style></head>
+<body class="antialiased relative">
+
+    <div class="threads-container">
+        <!-- Sol minimalista en líneas (solo contornos/bordes) en la esquina superior sobre las montañas -->
+        <svg class="absolute top-[630px] right-8 sm:right-16 md:right-28 w-24 h-24 sm:w-28 sm:h-28 z-0 pointer-events-none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Disco solar (solo contorno) -->
+            <circle cx="50" cy="50" r="18" class="mountain-path mountain-front"></circle>
+            <circle cx="50" cy="50" r="26" class="mountain-path mountain-contour"></circle>
+            <!-- Rayos lineales sutiles -->
+            <line x1="50" y1="10" x2="50" y2="22" class="mountain-path mountain-mid"></line>
+            <line x1="50" y1="78" x2="50" y2="90" class="mountain-path mountain-mid"></line>
+            <line x1="10" y1="50" x2="22" y2="50" class="mountain-path mountain-mid"></line>
+            <line x1="78" y1="50" x2="90" y2="50" class="mountain-path mountain-mid"></line>
+            <line x1="22" y1="22" x2="30" y2="30" class="mountain-path mountain-mid"></line>
+            <line x1="70" y1="70" x2="78" y2="78" class="mountain-path mountain-mid"></line>
+            <line x1="22" y1="78" x2="30" y2="70" class="mountain-path mountain-mid"></line>
+            <line x1="70" y1="30" x2="78" y2="22" class="mountain-path mountain-mid"></line>
+        </svg>
+
+        <!-- Paisaje de Montañas 1: Siluetas sutiles inspiradas en el Altiplano (Zona superior / Proyectos) -->
+        <svg class="absolute top-[650px] left-0 w-full h-[750px]" preserveAspectRatio="none" viewBox="0 0 1440 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Cordillera lejana (Cumbres altas y volcanes) -->
+            <path class="mountain-path mountain-back" d="M -60,480 C 60,460 160,340 280,310 C 370,280 430,220 500,190 C 560,170 600,280 690,320 C 770,350 830,290 920,260 C 1010,230 1090,130 1170,130 C 1240,130 1300,260 1390,300 C 1440,320 1480,310 1520,330"></path>
+            
+            <!-- Aristas y crestas sutiles -->
+            <path class="mountain-path mountain-contour" d="M 1170,130 C 1160,210 1130,290 1080,390"></path>
+            <path class="mountain-path mountain-contour" d="M 500,190 C 520,260 550,330 590,390"></path>
+            <path class="mountain-path mountain-contour" d="M 920,260 C 910,310 885,360 850,410"></path>
+
+            <!-- Cordillera intermedia -->
+            <path class="mountain-path mountain-mid" d="M -60,540 C 90,520 190,410 310,390 C 400,370 470,430 570,410 C 670,390 740,440 840,410 C 930,380 990,300 1080,280 C 1170,260 1240,380 1340,390 C 1420,400 1470,350 1540,370"></path>
+            
+            <!-- Silueta en primer plano (Colinas y lomas) -->
+            <path class="mountain-path mountain-front" d="M -60,630 C 140,610 260,510 410,490 C 550,470 660,540 800,510 C 930,480 1040,430 1170,450 C 1290,470 1410,540 1540,520"></path>
+            
+            <!-- Línea de hilo base que se extiende suavemente -->
+            <path class="mountain-path mountain-back" d="M -60,690 C 200,680 450,600 720,620 C 980,640 1250,570 1540,630"></path>
+        </svg>
+
+        <!-- Paisaje de Montañas 2: Siluetas sutiles en la zona inferior (Transición hacia el cierre) -->
+        <svg class="absolute top-[2800px] left-0 w-full h-[850px]" preserveAspectRatio="none" viewBox="0 0 1440 850" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Cumbres lejanas -->
+            <path class="mountain-path mountain-back" d="M -60,430 C 110,410 210,250 330,230 C 420,210 490,330 590,350 C 690,370 780,270 900,240 C 1000,210 1080,310 1210,290 C 1310,270 1420,180 1500,170 C 1540,165 1580,200 1620,230"></path>
+            <path class="mountain-path mountain-contour" d="M 330,230 C 350,300 380,370 420,430"></path>
+            <path class="mountain-path mountain-contour" d="M 900,240 C 890,310 860,370 820,440"></path>
+
+            <!-- Cordillera intermedia -->
+            <path class="mountain-path mountain-mid" d="M -60,510 C 80,490 200,360 310,350 C 410,340 500,420 610,400 C 720,380 800,320 920,300 C 1030,280 1110,380 1230,370 C 1340,360 1440,290 1540,280 C 1580,280 1620,300 1650,320"></path>
+            
+            <!-- Silueta en primer plano -->
+            <path class="mountain-path mountain-front" d="M -60,600 C 160,590 290,470 450,460 C 600,450 720,530 870,500 C 1020,470 1170,530 1320,510 C 1440,490 1540,530 1650,540"></path>
+        </svg>
+    </div>
+
+    <header class="relative bg-primary text-white min-h-[90vh] flex flex-col">
+        <!-- Imagen de fondo placeholder con opacidad -->
+        <div class="absolute inset-0 z-0">
+            <!-- [INSTRUCCIÓN]: Reemplaza el 'src' de esta etiqueta <img> con la ruta de tu imagen de fondo para el Hero -->
+            <img src="./Cercap-CDRO-intentocompartir_files/Captura de pantalla 2026-09-09 203918.png" alt="Hero Background" class="w-full h-full object-cover opacity-40 mix-blend-multiply">
+        </div>
+
+        <!-- Navbar -->
+        <nav class="relative z-10 w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center border-b border-white/20">
+            <div class="flex items-center gap-3">
+                <!-- Logo isologo-cercap sin fondo -->
+                <img src="./Cercap-CDRO-intentocompartir_files/isologo-cercap.png" alt="isologo-cercap" class="h-12 w-auto object-contain">
+                <div class="text-sm font-medium leading-tight">
+                    Cercap - CDRO<br>
+                    <span class="text-xs font-light opacity-80">Centro Regional de Capacitación...</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="hover:opacity-80 transition">Página</a>
+                <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="hover:opacity-80 transition">Página</a>
+                <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="hover:opacity-80 transition">Shop</a>
+                <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="border border-white px-5 py-2 hover:bg-white hover:text-primary transition">Botón</a>
+            </div>
+        </nav>
+
+        <!-- Contenido del Hero -->
+        <div class="relative z-10 flex-grow flex items-center justify-start max-w-7xl mx-auto px-6 py-12 w-full">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">Cercap-CDRO</h1>
+                <p class="text-base md:text-xl font-light mb-8 leading-relaxed">El Centro Regional de Capacitación para la Participación Comunitaria con sus siglas CERCAP es un sistema regional dedicado al impulso del modelo de desarrollo integral, equitativo y sustentable, basado en la filosofía y metodología de la participación comunitaria desarrollada por la Asociación CDRO.</p>
+                <button class="bg-dark text-white px-8 py-3 rounded hover:bg-black transition text-sm font-medium">
+                    Botón
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+        
+        <section class="max-w-7xl mx-auto px-6 py-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative z-10 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-[#1C2236]">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Juega Conmigo</h2>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        No. Nombre del proyecto/financiamiento Cobertura Componentes y objetivos Grupo meta 1 Proyecto Juega conmigo 60
+                    </p>
+                    <button class="bg-dark text-white px-6 py-2 rounded hover:bg-black transition text-sm font-medium">
+                        Leer más
+                    </button>
+                </div>
+                <div class="order-1 md:order-2 relative z-10">
+                    <img src="./Cercap-CDRO-intentocompartir_files/Captura de pantalla 2026-09-17 165613.png" alt="Juega Conmigo" class="w-full h-auto rounded-xl shadow-lg object-cover aspect-video border-[3px] border-[#1C2236]">
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 py-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="relative z-10">
+                    <img src="./Cercap-CDRO-intentocompartir_files/Captura de pantalla 2026-09-17 165917.png" alt="Promoviendo el desarrollo infantil y su transición a la juventud" class="w-full h-auto rounded-xl shadow-lg object-cover aspect-video border-[3px] border-[#1C2236]">
+                </div>
+                <div class="relative z-10 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-[#1C2236]">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Promoviendo el desarrollo infantil y su transición a la juventud</h2>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        No. Nombre del proyecto/financiamiento Cobertura Componentes y objetivos Grupo meta 2 Proyecto: Promoviendo el desarrollo
+                    </p>
+                    <button class="bg-dark text-white px-6 py-2 rounded hover:bg-black transition text-sm font-medium">
+                        Leer más
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Sección: Participantes de nuestros proyectos -->
+        <section class="py-24 relative z-10" style="background-color: #EDEDEE;">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-dark">Participantes de nuestros proyectos</h2>
+                <div class="flex justify-center items-center">
+                    <img src="./Cercap-CDRO-intentocompartir_files/Captura de pantalla 2026-09-17 172550.png" alt="Participantes de nuestros proyectos" class="w-full max-w-5xl h-auto object-contain mx-auto rounded-xl border-[3px] border-[#1C2236] shadow-md">
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-light py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12">Historias relevantes</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                    <!-- Elemento Grande (Izquierda) -->
+                    <div class="md:col-span-7 flex flex-col bg-white p-6 rounded-2xl border border-[#1C2236] shadow-sm">
+                        <!-- Producto Destacado -->
+                        <img src="./Cercap-CDRO-intentocompartir_files/Captura de pantalla 2026-09-09 205835.png" alt="Producto Destacado" class="w-full h-[380px] md:h-[460px] object-cover rounded-xl mb-4 shadow-sm border-[3px] border-[#1C2236]">
+                        <h3 class="text-xl font-bold mb-1">Historia empresarial</h3>
+                        <p class="text-gray-600 text-sm">Descripción del producto destacado.</p>
+                    </div>
+
+                    <!-- Elementos Pequeños (Derecha) -->
+                    <div class="md:col-span-5 flex flex-col gap-8">
+                        
+                        <!-- Producto Superior -->
+                        <div class="bg-white p-5 rounded-2xl border border-[#1C2236] shadow-sm">
+                            <!-- Producto Principal -->
+                            <img src="./Cercap-CDRO-intentocompartir_files/Captura de pantalla 2026-09-09 205217.png" alt="Producto Principal" class="w-full h-44 md:h-48 object-cover rounded-xl mb-4 shadow-sm border-2 border-[#1C2236]">
+                            <h3 class="text-lg font-bold mb-1">Producto</h3>
+                            <p class="text-gray-600 text-sm mb-1">Descripción del producto principal.</p>
+                            <p class="font-semibold">Q10.99</p>
+                        </div>
+
+                        <!-- Producto Inferior -->
+                        <div class="bg-white p-5 rounded-2xl border border-[#1C2236] shadow-sm">
+                            <!-- Producto Menor -->
+                            <img src="./Cercap-CDRO-intentocompartir_files/Captura de pantalla 2026-09-09 203918.png" alt="Producto Menor" class="w-full h-44 md:h-48 object-cover rounded-xl mb-4 shadow-sm border-2 border-[#1C2236]">
+                            <h3 class="text-lg font-bold mb-1">Producto</h3>
+                            <p class="text-gray-600 text-sm mb-1">Descripción del producto de menor categoría.</p>
+                            <p class="font-semibold">Q10.99</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 py-24">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 border-b pb-4">Encabezado de sección</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                <!-- Feature 1 -->
+                <div class="relative z-10 bg-white p-6 rounded-xl border border-[#1C2236] shadow-sm">
+                    <div class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-seedling text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Texto para lo que quieras decir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="relative z-10 bg-white p-6 rounded-xl border border-[#1C2236] shadow-sm">
+                    <div class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Texto para lo que quieras sugerir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="relative z-10 bg-white p-6 rounded-xl border border-[#1C2236] shadow-sm">
+                    <div class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-lock text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Texto para lo que quieras afirmar. Agrega puntos clave, citas, anécdotas o una historia muy breve.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="relative z-10 bg-white p-6 rounded-xl border border-[#1C2236] shadow-sm">
+                    <div class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Subtítulo</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Texto para lo que quieras escribir. Agrega puntos clave, citas, anécdotas o una historia muy breve.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-200 mt-12 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-between gap-12">
+                
+                <!-- Marca y Redes (Izquierda) -->
+                <div class="flex flex-col gap-6 w-full md:w-1/3">
+                    <h4 class="font-bold text-lg">Cercap-CDRO</h4>
+                    <div class="flex gap-4 text-gray-500">
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="hover:text-primary transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="hover:text-primary transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="hover:text-primary transition"><i class="fa-brands fa-youtube text-xl"></i></a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="hover:text-primary transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Enlaces (Derecha - 3 Columnas) -->
+                <div class="w-full md:w-2/3 grid grid-cols-3 gap-4">
+                    
+                    <!-- Columna 1 -->
+                    <div class="flex flex-col gap-3">
+                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                    </div>
+                    
+                    <!-- Columna 2 -->
+                    <div class="flex flex-col gap-3">
+                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                    </div>
+
+                    <!-- Columna 3 -->
+                    <div class="flex flex-col gap-3">
+                        <h5 class="font-semibold text-sm mb-2">Tema</h5>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                        <a href="file:///c%3A/Users/fatim/OneDrive/Desktop/Propuesta%20Interfaz%20PW/Index.html#" class="text-xs text-gray-600 hover:text-primary transition">Página</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body></html>
