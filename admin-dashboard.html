@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel administrativo | CERCAP</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+    <aside class="sidebar">
+        <a class="brand" href="admin-dashboard.html">
+            <img src="ImagenesCercap/isotipo-cdro (15).png" alt="CDRO">
+            <img src="ImagenesCercap/isologo-cercap(1).png" alt="CERCAP">
+            <span class="brand-copy"><strong>CERCAP</strong><span>Administración</span></span>
+        </a>
+        <p class="nav-label">Gestión de tienda</p>
+        <nav class="side-nav" aria-label="Administración">
+            <a class="active" href="admin-dashboard.html"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>Panel</a>
+            <a href="admin-productos.html"><svg viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4-8-4Zm0 0v10l8 4 8-4V7M12 11v10"/></svg>Productos <span class="nav-count">24</span></a>
+            <a href="admin-producto-formulario.html"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Agregar producto</a>
+            <a href="admin-ofertas.html"><svg viewBox="0 0 24 24"><path d="M20 13 13 20l-9-9V4h7l9 9Z"/><path d="M8.5 8.5h.01"/></svg>Ofertas <span class="nav-count">4</span></a>
+            <a href="shop.html"><svg viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-9 9M19 14v5H5V5h5"/></svg>Ver tienda</a>
+        </nav>
+        <div class="sidebar-user"><div class="avatar">AM</div><div><strong>Andrea Méndez</strong><span>Administradora</span></div></div>
+    </aside>
+
+    <div class="main-column">
+        <header class="topbar">
+            <a class="mobile-brand" href="admin-dashboard.html"><img src="ImagenesCercap/isologo-cercap(1).png" alt="CERCAP">Administración</a>
+            <div class="crumbs">Tienda / <strong>Panel general</strong></div>
+            <div class="top-actions"><a class="btn btn-secondary" href="shop.html">Ver tienda</a><a class="btn btn-primary" href="admin-producto-formulario.html">+ Nuevo producto</a></div>
+        </header>
+
+        <main class="content">
+            <div class="page-heading">
+                <div><p class="eyebrow">Resumen general</p><h1>Buenos días, Andrea</h1><p class="lead">Administra el catálogo, la disponibilidad y las ofertas de la tienda virtual.</p></div>
+            </div>
+
+            <section class="metric-grid" aria-label="Resumen de productos">
+                <article class="metric-card"><div class="metric-top"><div><p class="metric-label">Productos publicados</p><p class="metric-number">24</p></div><span class="metric-icon"><svg class="icon" viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4-8-4Zm0 0v10l8 4 8-4V7M12 11v10"/></svg></span></div><p class="metric-note">3 agregados este mes</p></article>
+                <article class="metric-card offer"><div class="metric-top"><div><p class="metric-label">Ofertas activas</p><p class="metric-number">4</p></div><span class="metric-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M20 13 13 20l-9-9V4h7l9 9Z"/><path d="M8.5 8.5h.01"/></svg></span></div><p class="metric-note">Hasta 20% de descuento</p></article>
+                <article class="metric-card"><div class="metric-top"><div><p class="metric-label">Bajo pedido</p><p class="metric-number">7</p></div><span class="metric-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div><p class="metric-note">Incluye productos alimenticios</p></article>
+                <article class="metric-card warning"><div class="metric-top"><div><p class="metric-label">Requieren atención</p><p class="metric-number">2</p></div><span class="metric-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4L12 3Z"/><path d="M12 9v5M12 17h.01"/></svg></span></div><p class="metric-note">Productos sin disponibilidad</p></article>
+            </section>
+
+            <div class="dashboard-grid">
+                <section class="panel">
+                    <div class="panel-header"><div><h2>Productos recientes</h2><p>Últimas incorporaciones al catálogo</p></div><a class="btn btn-secondary" href="admin-productos.html">Ver todos</a></div>
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Disponibilidad</th><th>Estado</th></tr></thead>
+                            <tbody>
+                                <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">MF</span><div><strong>Mermelada de Fresa</strong><small>CCAP-CON-CHA-MER-250</small></div></div></td><td>Conservas</td><td>Q35.00</td><td><span class="badge badge-blue">Bajo pedido</span></td><td><span class="badge badge-green">Publicado</span></td></tr>
+                                <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">AM</span><div><strong>Aretes de Mostacilla</strong><small>CCAP-ART-ARE-001</small></div></div></td><td>Artesanías</td><td><span class="price-old">Q180.00</span><span class="price-offer">Q150.00</span></td><td><span class="badge badge-green">En stock</span></td><td><span class="badge badge-red">En oferta</span></td></tr>
+                                <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">CL</span><div><strong>Cerámica Local</strong><small>CCAP-CER-LOC-003</small></div></div></td><td>Cerámica</td><td>Q95.00</td><td><span class="badge badge-green">En stock</span></td><td><span class="badge badge-green">Publicado</span></td></tr>
+                                <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">BF</span><div><strong>Bolso de Fibra</strong><small>CCAP-ART-BOL-004</small></div></div></td><td>Artesanías</td><td>Q120.00</td><td><span class="badge badge-amber">Pocas unidades</span></td><td><span class="badge badge-green">Publicado</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <aside class="panel">
+                    <div class="panel-header"><div><h2>Acciones rápidas</h2><p>Atajos de administración</p></div></div>
+                    <div class="panel-body quick-grid">
+                        <a class="quick-action" href="admin-producto-formulario.html"><span class="metric-icon">+</span><span><strong>Agregar producto</strong><span>Completar una nueva ficha</span></span><b>→</b></a>
+                        <a class="quick-action" href="admin-ofertas.html"><span class="metric-icon">%</span><span><strong>Crear una oferta</strong><span>Elegir productos y descuento</span></span><b>→</b></a>
+                        <a class="quick-action" href="admin-productos.html"><span class="metric-icon">24</span><span><strong>Revisar catálogo</strong><span>Editar estados y precios</span></span><b>→</b></a>
+                        <a class="quick-action" href="shop.html"><span class="metric-icon">↗</span><span><strong>Ver tienda pública</strong><span>Comprobar el catálogo</span></span><b>→</b></a>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

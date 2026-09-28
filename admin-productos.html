@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Administración CERCAP</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+    <aside class="sidebar">
+        <a class="brand" href="admin-dashboard.html"><img src="ImagenesCercap/isotipo-cdro (15).png" alt="CDRO"><img src="ImagenesCercap/isologo-cercap(1).png" alt="CERCAP"><span class="brand-copy"><strong>CERCAP</strong><span>Administración</span></span></a>
+        <p class="nav-label">Gestión de tienda</p>
+        <nav class="side-nav" aria-label="Administración">
+            <a href="admin-dashboard.html"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>Panel</a>
+            <a class="active" href="admin-productos.html"><svg viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4-8-4Zm0 0v10l8 4 8-4V7M12 11v10"/></svg>Productos <span class="nav-count">24</span></a>
+            <a href="admin-producto-formulario.html"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Agregar producto</a>
+            <a href="admin-ofertas.html"><svg viewBox="0 0 24 24"><path d="M20 13 13 20l-9-9V4h7l9 9Z"/><path d="M8.5 8.5h.01"/></svg>Ofertas <span class="nav-count">4</span></a>
+            <a href="shop.html"><svg viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-9 9M19 14v5H5V5h5"/></svg>Ver tienda</a>
+        </nav>
+        <div class="sidebar-user"><div class="avatar">AM</div><div><strong>Andrea Méndez</strong><span>Administradora</span></div></div>
+    </aside>
+
+    <div class="main-column">
+        <header class="topbar">
+            <a class="mobile-brand" href="admin-dashboard.html"><img src="ImagenesCercap/isologo-cercap(1).png" alt="CERCAP">Administración</a>
+            <div class="crumbs">Tienda / <strong>Productos</strong></div>
+            <div class="top-actions"><a class="btn btn-secondary" href="shop.html">Ver catálogo</a><a class="btn btn-primary" href="admin-producto-formulario.html">+ Agregar producto</a></div>
+        </header>
+
+        <main class="content">
+            <div class="page-heading">
+                <div><p class="eyebrow">Inventario</p><h1>Productos</h1><p class="lead">Consulta y administra la información que se muestra en el catálogo público.</p></div>
+                <a class="btn btn-primary" href="admin-producto-formulario.html">+ Agregar producto</a>
+            </div>
+
+            <section class="metric-grid" aria-label="Resumen del inventario">
+                <article class="metric-card"><div class="metric-top"><div><p class="metric-label">Todos los productos</p><p class="metric-number">24</p></div><span class="metric-icon">#</span></div><p class="metric-note">20 publicados y 4 borradores</p></article>
+                <article class="metric-card"><div class="metric-top"><div><p class="metric-label">En stock</p><p class="metric-number">15</p></div><span class="metric-icon">✓</span></div><p class="metric-note">Disponibles para compra</p></article>
+                <article class="metric-card"><div class="metric-top"><div><p class="metric-label">Bajo pedido</p><p class="metric-number">7</p></div><span class="metric-icon">◷</span></div><p class="metric-note">Con tiempo de preparación</p></article>
+                <article class="metric-card offer"><div class="metric-top"><div><p class="metric-label">Con oferta</p><p class="metric-number">4</p></div><span class="metric-icon">%</span></div><p class="metric-note">Promociones visibles</p></article>
+            </section>
+
+            <section class="panel">
+                <div class="toolbar">
+                    <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" placeholder="Buscar por nombre o código..."></div>
+                    <select aria-label="Filtrar por categoría"><option>Todas las categorías</option><option>Artesanías</option><option>Conservas</option><option>Textiles</option><option>Cerámica</option></select>
+                    <select aria-label="Filtrar por disponibilidad"><option>Toda disponibilidad</option><option>En stock</option><option>Bajo pedido</option><option>Sin disponibilidad</option></select>
+                    <select aria-label="Filtrar por estado"><option>Todos los estados</option><option>Publicado</option><option>Borrador</option><option>En oferta</option></select>
+                </div>
+
+                <div class="table-wrap desktop-table">
+                    <table class="data-table">
+                        <thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Compra mín.</th><th>Disponibilidad</th><th>Estado</th><th>Acciones</th></tr></thead>
+                        <tbody>
+                            <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">MF</span><div><strong>Mermelada de Fresa</strong><small>CCAP-CON-CHA-MER-250</small></div></div></td><td>Conservas</td><td><strong>Q35.00</strong></td><td>5 unidades</td><td><span class="badge badge-blue">Bajo pedido</span></td><td><span class="badge badge-green">Publicado</span></td><td><div class="actions"><a class="action-link" href="mermelada.html" title="Ver">↗</a><a class="action-link" href="admin-producto-formulario.html" title="Editar">✎</a><a class="action-link" href="#" title="Más opciones">•••</a></div></td></tr>
+                            <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">AM</span><div><strong>Aretes de Mostacilla</strong><small>CCAP-ART-ARE-001</small></div></div></td><td>Artesanías</td><td><span class="price-old">Q180.00</span><span class="price-offer">Q150.00</span></td><td>10 unidades</td><td><span class="badge badge-green">En stock</span></td><td><span class="badge badge-red">En oferta</span></td><td><div class="actions"><a class="action-link" href="producto.html" title="Ver">↗</a><a class="action-link" href="admin-producto-formulario.html" title="Editar">✎</a><a class="action-link" href="#" title="Más opciones">•••</a></div></td></tr>
+                            <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">CL</span><div><strong>Cerámica Local</strong><small>CCAP-CER-LOC-003</small></div></div></td><td>Cerámica</td><td><strong>Q95.00</strong></td><td>1 unidad</td><td><span class="badge badge-green">En stock</span></td><td><span class="badge badge-green">Publicado</span></td><td><div class="actions"><a class="action-link" href="#" title="Ver">↗</a><a class="action-link" href="admin-producto-formulario.html" title="Editar">✎</a><a class="action-link" href="#" title="Más opciones">•••</a></div></td></tr>
+                            <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">BF</span><div><strong>Bolso de Fibra</strong><small>CCAP-ART-BOL-004</small></div></div></td><td>Artesanías</td><td><strong>Q120.00</strong></td><td>2 unidades</td><td><span class="badge badge-amber">Pocas unidades</span></td><td><span class="badge badge-green">Publicado</span></td><td><div class="actions"><a class="action-link" href="#" title="Ver">↗</a><a class="action-link" href="admin-producto-formulario.html" title="Editar">✎</a><a class="action-link" href="#" title="Más opciones">•••</a></div></td></tr>
+                            <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">JP</span><div><strong>Juego de Pulseras</strong><small>CCAP-ART-PUL-005</small></div></div></td><td>Artesanías</td><td><strong>Q45.00</strong></td><td>5 unidades</td><td><span class="badge badge-green">En stock</span></td><td><span class="badge badge-green">Publicado</span></td><td><div class="actions"><a class="action-link" href="#" title="Ver">↗</a><a class="action-link" href="admin-producto-formulario.html" title="Editar">✎</a><a class="action-link" href="#" title="Más opciones">•••</a></div></td></tr>
+                            <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">CM</span><div><strong>Centro de Mesa</strong><small>CCAP-TEX-CEN-006</small></div></div></td><td>Textiles</td><td><span class="price-old">Q85.00</span><span class="price-offer">Q72.00</span></td><td>1 unidad</td><td><span class="badge badge-green">En stock</span></td><td><span class="badge badge-red">En oferta</span></td><td><div class="actions"><a class="action-link" href="#" title="Ver">↗</a><a class="action-link" href="admin-producto-formulario.html" title="Editar">✎</a><a class="action-link" href="#" title="Más opciones">•••</a></div></td></tr>
+                            <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">TR</span><div><strong>Taza Rústica</strong><small>CCAP-CER-TAZ-007</small></div></div></td><td>Cerámica</td><td><strong>Q35.00</strong></td><td>6 unidades</td><td><span class="badge badge-gray">Sin disponibilidad</span></td><td><span class="badge badge-amber">Borrador</span></td><td><div class="actions"><a class="action-link" href="#" title="Ver">↗</a><a class="action-link" href="admin-producto-formulario.html" title="Editar">✎</a><a class="action-link" href="#" title="Más opciones">•••</a></div></td></tr>
+                            <tr><td><div class="product-cell"><span class="product-thumb placeholder-thumb">CD</span><div><strong>Canasta Decorativa</strong><small>CCAP-ART-CAN-008</small></div></div></td><td>Artesanías</td><td><strong>Q110.00</strong></td><td>2 unidades</td><td><span class="badge badge-blue">Bajo pedido</span></td><td><span class="badge badge-green">Publicado</span></td><td><div class="actions"><a class="action-link" href="#" title="Ver">↗</a><a class="action-link" href="admin-producto-formulario.html" title="Editar">✎</a><a class="action-link" href="#" title="Más opciones">•••</a></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mobile-product-list">
+                    <article class="mobile-card"><div class="mobile-card-head"><span class="product-thumb placeholder-thumb">MF</span><div class="product-cell"><div><strong>Mermelada de Fresa</strong><small>CCAP-CON-CHA-MER-250</small></div></div></div><div class="mobile-card-grid"><div><span>Precio</span><b>Q35.00</b></div><div><span>Mínimo</span><b>5 unidades</b></div><div><span>Disponibilidad</span><b>Bajo pedido</b></div><div><span>Estado</span><b>Publicado</b></div></div><div class="actions"><a class="btn btn-secondary" href="mermelada.html">Ver</a><a class="btn btn-primary" href="admin-producto-formulario.html">Editar</a></div></article>
+                    <article class="mobile-card"><div class="mobile-card-head"><span class="product-thumb placeholder-thumb">AM</span><div class="product-cell"><div><strong>Aretes de Mostacilla</strong><small>CCAP-ART-ARE-001</small></div></div></div><div class="mobile-card-grid"><div><span>Oferta</span><b class="price-offer">Q150.00</b></div><div><span>Mínimo</span><b>10 unidades</b></div><div><span>Disponibilidad</span><b>En stock</b></div><div><span>Estado</span><b>En oferta</b></div></div><div class="actions"><a class="btn btn-secondary" href="producto.html">Ver</a><a class="btn btn-primary" href="admin-producto-formulario.html">Editar</a></div></article>
+                    <article class="mobile-card"><div class="mobile-card-head"><span class="product-thumb placeholder-thumb">CL</span><div class="product-cell"><div><strong>Cerámica Local</strong><small>CCAP-CER-LOC-003</small></div></div></div><div class="mobile-card-grid"><div><span>Precio</span><b>Q95.00</b></div><div><span>Mínimo</span><b>1 unidad</b></div><div><span>Disponibilidad</span><b>En stock</b></div><div><span>Estado</span><b>Publicado</b></div></div><div class="actions"><a class="btn btn-secondary" href="#">Ver</a><a class="btn btn-primary" href="admin-producto-formulario.html">Editar</a></div></article>
+                </div>
+
+                <div class="pagination"><span>Mostrando 1–8 de 24 productos</span><nav class="pages" aria-label="Paginación"><a href="#">←</a><a class="active" href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">→</a></nav></div>
+            </section>
+        </main>
+    </div>
+</div>
+</body>
+</html>

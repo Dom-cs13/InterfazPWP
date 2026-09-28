@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas | Administración CERCAP</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+    <aside class="sidebar">
+        <a class="brand" href="admin-dashboard.html"><img src="ImagenesCercap/isotipo-cdro (15).png" alt="CDRO"><img src="ImagenesCercap/isologo-cercap(1).png" alt="CERCAP"><span class="brand-copy"><strong>CERCAP</strong><span>Administración</span></span></a>
+        <p class="nav-label">Gestión de tienda</p>
+        <nav class="side-nav" aria-label="Administración">
+            <a href="admin-dashboard.html"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>Panel</a>
+            <a href="admin-productos.html"><svg viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4-8-4Zm0 0v10l8 4 8-4V7M12 11v10"/></svg>Productos <span class="nav-count">24</span></a>
+            <a href="admin-producto-formulario.html"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Agregar producto</a>
+            <a class="active" href="admin-ofertas.html"><svg viewBox="0 0 24 24"><path d="M20 13 13 20l-9-9V4h7l9 9Z"/><path d="M8.5 8.5h.01"/></svg>Ofertas <span class="nav-count">4</span></a>
+            <a href="shop.html"><svg viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-9 9M19 14v5H5V5h5"/></svg>Ver tienda</a>
+        </nav>
+        <div class="sidebar-user"><div class="avatar">AM</div><div><strong>Andrea Méndez</strong><span>Administradora</span></div></div>
+    </aside>
+
+    <div class="main-column">
+        <header class="topbar">
+            <a class="mobile-brand" href="admin-dashboard.html"><img src="ImagenesCercap/isologo-cercap(1).png" alt="CERCAP">Administración</a>
+            <div class="crumbs">Tienda / <strong>Ofertas</strong></div>
+            <div class="top-actions"><a class="btn btn-secondary" href="shop.html">Ver tienda</a><a class="btn btn-primary" href="#crear-oferta">+ Nueva oferta</a></div>
+        </header>
+
+        <main class="content">
+            <div class="page-heading">
+                <div><p class="eyebrow">Promociones</p><h1>Ofertas</h1><p class="lead">Selecciona productos, define el precio especial y controla la vigencia de cada promoción.</p></div>
+                <a class="btn btn-primary" href="#crear-oferta">+ Crear oferta</a>
+            </div>
+
+            <section class="offer-summary" aria-label="Resumen de ofertas">
+                <article class="offer-stat"><span>Ofertas activas</span><strong>4</strong><small class="badge badge-green" style="margin-top:8px">Visibles en tienda</small></article>
+                <article class="offer-stat"><span>Programadas</span><strong>2</strong><small class="badge badge-blue" style="margin-top:8px">Próximamente</small></article>
+                <article class="offer-stat"><span>Mayor descuento</span><strong>20%</strong><small class="badge badge-red" style="margin-top:8px">Ahorro máximo</small></article>
+            </section>
+
+            <div class="offer-builder" id="crear-oferta" style="margin-top:22px">
+                <section class="panel form-section">
+                    <div class="section-title"><span class="section-index">%</span><div><h2>Configurar nueva oferta</h2><p>La promoción puede aplicarse a uno o varios productos seleccionados.</p></div></div>
+                    <div class="fields-3">
+                        <div class="field"><label for="tipo-descuento">Tipo de descuento</label><select id="tipo-descuento"><option>Precio especial</option><option>Porcentaje</option><option>Monto de descuento</option></select></div>
+                        <div class="field"><label for="valor-oferta">Precio de oferta</label><div class="input-prefix"><span>Q</span><input id="valor-oferta" type="number" min="0" step="0.01" value="150.00"></div></div>
+                        <div class="field"><label for="distintivo">Texto del distintivo</label><input id="distintivo" type="text" value="Oferta" maxlength="24"></div>
+                        <div class="field"><label for="fecha-inicio">Fecha de inicio</label><input id="fecha-inicio" type="date" value="2026-09-27"></div>
+                        <div class="field"><label for="fecha-fin">Fecha de finalización</label><input id="fecha-fin" type="date" value="2026-10-15"></div>
+                        <div class="field"><label for="estado-oferta">Estado inicial</label><select id="estado-oferta"><option>Activar al guardar</option><option>Programar</option><option>Guardar como borrador</option></select></div>
+                        <div class="field field-full"><label for="nota-oferta">Nota interna</label><input id="nota-oferta" type="text" placeholder="Ej. Promoción de temporada (no visible en la tienda)"></div>
+                    </div>
+                    <div class="separator"></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><p class="hint">Selecciona los productos en la lista inferior antes de guardar.</p><div style="display:flex;gap:8px"><button class="btn btn-secondary" type="button">Limpiar</button><button class="btn btn-primary" type="button">Guardar oferta</button></div></div>
+                </section>
+
+                <aside class="offer-preview">
+                    <p class="eyebrow">Vista previa en la tienda</p>
+                    <span class="badge badge-solid">Oferta</span>
+                    <h3 style="margin-top:14px">Aretes Artesanales de Mostacilla</h3>
+                    <div class="old">Precio regular Q180.00</div>
+                    <div class="new">Q150.00</div>
+                    <span class="saving">Ahorras Q30.00 · 17%</span>
+                    <p style="margin:18px 0 0;font-size:11px;line-height:1.5;opacity:.75">La vista pública mostrará el precio original tachado, el nuevo precio y el ahorro.</p>
+                </aside>
+            </div>
+
+            <section class="panel">
+                <div class="panel-header"><div><h2>Seleccionar productos</h2><p>Lista completa del catálogo · 2 seleccionados</p></div><span class="badge badge-blue">Aplicación múltiple</span></div>
+                <div class="toolbar">
+                    <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" placeholder="Buscar productos..."></div>
+                    <select aria-label="Filtrar por categoría"><option>Todas las categorías</option><option>Artesanías</option><option>Conservas</option><option>Textiles</option><option>Cerámica</option></select>
+                    <select aria-label="Filtrar por promoción"><option>Todos</option><option>Sin oferta</option><option>Con oferta activa</option><option>Oferta programada</option></select>
+                </div>
+
+                <div class="table-wrap desktop-table">
+                    <table class="data-table">
+                        <thead><tr><th class="table-check"><input class="check" type="checkbox" aria-label="Seleccionar todos"></th><th>Producto</th><th>Categoría</th><th>Precio regular</th><th>Oferta actual</th><th>Vigencia</th><th>Estado</th></tr></thead>
+                        <tbody>
+                            <tr><td class="table-check"><input class="check" type="checkbox" checked aria-label="Seleccionar Aretes"></td><td><div class="product-cell"><span class="product-thumb placeholder-thumb">AM</span><div><strong>Aretes de Mostacilla</strong><small>CCAP-ART-ARE-001</small></div></div></td><td>Artesanías</td><td>Q180.00</td><td><b class="price-offer">Q150.00</b><small class="price-old" style="text-decoration:none">17% menos</small></td><td>27 sep–15 oct</td><td><span class="badge badge-red">Activa</span></td></tr>
+                            <tr><td class="table-check"><input class="check" type="checkbox" checked aria-label="Seleccionar Centro de Mesa"></td><td><div class="product-cell"><span class="product-thumb placeholder-thumb">CM</span><div><strong>Centro de Mesa</strong><small>CCAP-TEX-CEN-006</small></div></div></td><td>Textiles</td><td>Q85.00</td><td><b class="price-offer">Q72.00</b><small class="price-old" style="text-decoration:none">15% menos</small></td><td>27 sep–15 oct</td><td><span class="badge badge-red">Activa</span></td></tr>
+                            <tr><td class="table-check"><input class="check" type="checkbox" aria-label="Seleccionar Mermelada"></td><td><div class="product-cell"><span class="product-thumb placeholder-thumb">MF</span><div><strong>Mermelada de Fresa</strong><small>CCAP-CON-CHA-MER-250</small></div></div></td><td>Conservas</td><td>Q35.00</td><td>—</td><td>—</td><td><span class="badge badge-gray">Sin oferta</span></td></tr>
+                            <tr><td class="table-check"><input class="check" type="checkbox" aria-label="Seleccionar Cerámica"></td><td><div class="product-cell"><span class="product-thumb placeholder-thumb">CL</span><div><strong>Cerámica Local</strong><small>CCAP-CER-LOC-003</small></div></div></td><td>Cerámica</td><td>Q95.00</td><td>Q80.00</td><td>1–12 oct</td><td><span class="badge badge-blue">Programada</span></td></tr>
+                            <tr><td class="table-check"><input class="check" type="checkbox" aria-label="Seleccionar Bolso"></td><td><div class="product-cell"><span class="product-thumb placeholder-thumb">BF</span><div><strong>Bolso de Fibra</strong><small>CCAP-ART-BOL-004</small></div></div></td><td>Artesanías</td><td>Q120.00</td><td>—</td><td>—</td><td><span class="badge badge-gray">Sin oferta</span></td></tr>
+                            <tr><td class="table-check"><input class="check" type="checkbox" aria-label="Seleccionar Pulseras"></td><td><div class="product-cell"><span class="product-thumb placeholder-thumb">JP</span><div><strong>Juego de Pulseras</strong><small>CCAP-ART-PUL-005</small></div></div></td><td>Artesanías</td><td>Q45.00</td><td>—</td><td>—</td><td><span class="badge badge-gray">Sin oferta</span></td></tr>
+                            <tr><td class="table-check"><input class="check" type="checkbox" aria-label="Seleccionar Taza"></td><td><div class="product-cell"><span class="product-thumb placeholder-thumb">TR</span><div><strong>Taza Rústica</strong><small>CCAP-CER-TAZ-007</small></div></div></td><td>Cerámica</td><td>Q35.00</td><td>—</td><td>—</td><td><span class="badge badge-amber">Borrador</span></td></tr>
+                            <tr><td class="table-check"><input class="check" type="checkbox" aria-label="Seleccionar Canasta"></td><td><div class="product-cell"><span class="product-thumb placeholder-thumb">CD</span><div><strong>Canasta Decorativa</strong><small>CCAP-ART-CAN-008</small></div></div></td><td>Artesanías</td><td>Q110.00</td><td>—</td><td>—</td><td><span class="badge badge-gray">Sin oferta</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mobile-product-list">
+                    <article class="mobile-card"><div class="mobile-card-head"><input class="check" type="checkbox" checked><span class="product-thumb placeholder-thumb">AM</span><div class="product-cell"><div><strong>Aretes de Mostacilla</strong><small>Artesanías</small></div></div></div><div class="mobile-card-grid"><div><span>Regular</span><b>Q180.00</b></div><div><span>Oferta</span><b class="price-offer">Q150.00</b></div><div><span>Vigencia</span><b>27 sep–15 oct</b></div><div><span>Estado</span><b>Activa</b></div></div></article>
+                    <article class="mobile-card"><div class="mobile-card-head"><input class="check" type="checkbox" checked><span class="product-thumb placeholder-thumb">CM</span><div class="product-cell"><div><strong>Centro de Mesa</strong><small>Textiles</small></div></div></div><div class="mobile-card-grid"><div><span>Regular</span><b>Q85.00</b></div><div><span>Oferta</span><b class="price-offer">Q72.00</b></div><div><span>Vigencia</span><b>27 sep–15 oct</b></div><div><span>Estado</span><b>Activa</b></div></div></article>
+                    <article class="mobile-card"><div class="mobile-card-head"><input class="check" type="checkbox"><span class="product-thumb placeholder-thumb">MF</span><div class="product-cell"><div><strong>Mermelada de Fresa</strong><small>Conservas</small></div></div></div><div class="mobile-card-grid"><div><span>Regular</span><b>Q35.00</b></div><div><span>Oferta</span><b>—</b></div><div><span>Vigencia</span><b>—</b></div><div><span>Estado</span><b>Sin oferta</b></div></div></article>
+                </div>
+
+                <div class="pagination"><span>Mostrando 1–8 de 24 productos</span><nav class="pages" aria-label="Paginación"><a href="#">←</a><a class="active" href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">→</a></nav></div>
+            </section>
+        </main>
+    </div>
+</div>
+</body>
+</html>
